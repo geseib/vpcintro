@@ -8,12 +8,12 @@ weight = 39
 ![Basic EC2 Diagram](/images/vpc_intro_complete_diagram.png)
 
 We completed the following steps:
-- Created a VPC
-- Created 4 Subnets
-- Created an Internet Gateways and attached it to the VPC
-- Created a Virtual Gateway and attached it to the VPC
-- Create NAT Gateway in the public Subnet
-- Create Public and Private Route Tables, with default routes and attached them to the subnets.
+   - Created a VPC
+   - Created 4 Subnets
+   - Created an Internet Gateways and attached it to the VPC
+   - Created a Virtual Gateway and attached it to the VPC
+   - Create NAT Gateway in the public Subnet
+   - Create Public and Private Route Tables, with default routes and attached them to the subnets.
 
 
 
