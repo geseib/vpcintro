@@ -1,0 +1,40 @@
+baseURL = "https://networkshopdev.aws.seibtribe.com"
+languageCode = "en-us"
+defaultContentLanguage = "en"
+title = "AWS Networking Workshop"
+theme = "learn"
+uglyurls = true
+sectionPagesMenu = "main"
+pygmentsCodeFences = true
+pygmentsStyle = "monokai"
+
+[params]
+editURL = "https://github.com/geseib/awsnetworkshop/edit/master/website/content/"
+themeVariant = "mine"
+showVisitedLinks = true
+description = "AWS Networking Workshop"
+disableSearch = false
+disableAssetsBusting = true
+disableLanguageSwitchingButton = true
+disableShortcutsTitle = true
+disableInlineCopyToClipBoard = true
+
+[outputs]
+home = [ "HTML", "AMP", "RSS", "JSON"]
+page = [ "HTML", "AMP"]
+
+[blackfriday]
+plainIDAnchors = true
+hrefTargetBlank = true
+
+[menu]
+
+[[menu.shortcuts]]
+name = "<i class='fab fa-github'></i> GitHub Project"
+url = "https://github.com/geseib/awsnetworkshop"
+weight = 30
+
+[[menu.shortcuts]]
+name = "<i class='fas fa-envelope'></i> Have questions?"
+url = "mailto:tgwworkshop@amazon.com"
+weight = 40
