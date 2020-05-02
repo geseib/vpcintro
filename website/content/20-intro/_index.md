@@ -1,18 +1,7 @@
----
-title: "Introduction"
-pre: "<b>   </b>"
-chapter: true
-weight: 20
-tags:
-  - beginner
----
++++
+menutitle = "Introduction"
+chapter = false
+weight = 20
++++
 
-# Console
-
-## Switching between Services in the AWS Console
-
-![Switching between Services](images/console_switching_services.png)
-
-## Verifying AWS Region in the Console
-
-![Switching between Services](images/console_verify_region.png)
+Just a few pointers on the basics of getting started in the AWS console.
