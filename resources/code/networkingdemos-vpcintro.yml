@@ -1,0 +1,432 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: "Networking Demos - Single VPC with IGW"
+
+Metadata:
+  "AWS::CloudFormation::Interface":
+    ParameterGroups:
+      - Label:
+          default: "VPC Parameters"
+        Parameters:
+          - AvailabilityZoneA
+          - AvailabilityZoneB
+          - VPCCIDR
+
+Parameters:
+  AvailabilityZoneA:
+    Description: Availability Zone 1
+    Type: AWS::EC2::AvailabilityZone::Name
+    Default: us-west-1a
+  AvailabilityZoneB:
+    Description: Availability Zone 2
+    Type: AWS::EC2::AvailabilityZone::Name
+    Default: us-west-1c
+  VPCCIDR:
+    Type: String
+    Description: Provide a/16 CIDR space.
+    Default: 10.64.0.0/16
+    AllowedValues:
+      - "10.0.0.0/16"
+      - "10.1.0.0/16"
+      - "10.2.0.0/16"
+      - "10.3.0.0/16"
+      - "10.4.0.0/16"
+      - "10.64.0.0/16"
+      - "10.65.0.0/16"
+      - "10.66.0.0/16"
+      - "10.67.0.0/16"
+
+Mappings:
+  RegionMap:
+    "eu-north-1":
+      AMI: "ami-3f36be41"
+    "ap-south-1":
+      AMI: "ami-0d2692b6acea72ee6"
+    "eu-west-3":
+      AMI: "ami-0adcddd3324248c4c"
+    "eu-west-2":
+      AMI: "ami-0d8e27447ec2c8410"
+    "eu-west-1":
+      AMI: "ami-0bbc25e23a7640b9b"
+    "ap-northeast-3":
+      AMI: "ami-0ee933a7f81beb045"
+    "ap-northeast-2":
+      AMI: "ami-095ca789e0549777d"
+    "ap-northeast-1":
+      AMI: "ami-0c3fd0f5d33134a76"
+    "sa-east-1":
+      AMI: "ami-058943e7d9b9cabfb"
+    "ca-central-1":
+      AMI: "ami-0d4ae09ec9361d8ac"
+    "ap-southeast-1":
+      AMI: "ami-01f7527546b557442"
+    "ap-southeast-2":
+      AMI: "ami-0dc96254d5535925f"
+    "eu-central-1":
+      AMI: "ami-0cc293023f983ed53"
+    "us-east-1":
+      AMI: "ami-0b898040803850657"
+    "us-east-2":
+      AMI: "ami-0d8f6eb4f641ef691"
+    "us-west-1":
+      AMI: "ami-056ee704806822732"
+    "us-west-2":
+      AMI: "ami-082b5a644766e0e6f"
+
+Resources:
+  #VPC
+  VPC:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: !Ref VPCCIDR
+      EnableDnsSupport: "true"
+      EnableDnsHostnames: "true"
+      InstanceTenancy: default
+      Tags:
+        - Key: Name
+          Value: !Join
+            - ""
+            - - Ref: "AWS::StackName"
+              - "-"
+              - VPC
+        - Key: project
+          Value: Networking Demos by GSeib
+
+  VPCPrivateSubnetA:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId:
+        Ref: VPC
+      CidrBlock: !Select [2, !Cidr [!GetAtt VPC.CidrBlock, 6, 8]]
+      AvailabilityZone:
+        Ref: AvailabilityZoneA
+      MapPublicIpOnLaunch: false
+      Tags:
+        - Key: Name
+          Value: !Join
+            - ""
+            - - Ref: "AWS::StackName"
+              - "-"
+              - "Priv-A Subnet"
+
+  VPCPrivateSubnetB:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId:
+        Ref: VPC
+      CidrBlock: !Select [3, !Cidr [!GetAtt VPC.CidrBlock, 6, 8]]
+      AvailabilityZone:
+        Ref: AvailabilityZoneB
+      MapPublicIpOnLaunch: false
+      Tags:
+        - Key: Name
+          Value: !Join
+            - ""
+            - - Ref: "AWS::StackName"
+              - "-"
+              - "Priv-B Subnet"
+
+  VPCPrivateSubnetRouteTable:
+    Type: AWS::EC2::RouteTable
+    Properties:
+      VpcId:
+        Ref: VPC
+      Tags:
+        - Key: Name
+          Value: !Join
+            - ""
+            - - Ref: "AWS::StackName"
+              - "-"
+              - "Private Route Table"
+
+  VPCPrivateASubnetRouteTableAssociation:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      RouteTableId:
+        Ref: VPCPrivateSubnetRouteTable
+      SubnetId:
+        Ref: VPCPrivateSubnetA
+
+  VPCPrivateBSubnetRouteTableAssociation:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      RouteTableId:
+        Ref: VPCPrivateSubnetRouteTable
+      SubnetId:
+        Ref: VPCPrivateSubnetB
+
+  VPCServerRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: !Join
+        - ""
+        - - Ref: "AWS::StackName"
+          - "-"
+          - "SSMRole"
+          - "-"
+          - Ref: AWS::Region
+      Path: "/"
+      ManagedPolicyArns:
+        - "arn:aws:iam::aws:policy/service-role/AmazonEC2RoleforSSM"
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - ec2.amazonaws.com
+            Action:
+              - sts:AssumeRole
+
+  VPCInstanceProfile:
+    Type: AWS::IAM::InstanceProfile
+    Properties:
+      Path: "/"
+      Roles:
+        - !Ref VPCServerRole
+
+  #ICMP is allowed from anywhere within 10.0.0.0 address space (not recommended for real environments)
+  VPCEc2SecGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Open-up ports for ICMP and SSH from 10.x.x.x
+      GroupName: !Join
+        - ""
+        - - Ref: "AWS::StackName"
+          - "-"
+          - "EC2-SG"
+      VpcId:
+        Ref: VPC
+      SecurityGroupIngress:
+        - IpProtocol: icmp
+          CidrIp: 10.0.0.0/8
+          FromPort: "-1"
+          ToPort: "-1"
+
+  VPCServerEc2:
+    Type: AWS::EC2::Instance
+    DependsOn: VPCPrivateSubnetA
+    Properties:
+      SubnetId:
+        Ref: VPCPrivateSubnetA
+      ImageId: !FindInMap [RegionMap, !Ref "AWS::Region", AMI]
+      PrivateIpAddress: !Join
+        - "."
+        - - !Select [
+              0,
+              !Split [".", !Select [2, !Cidr [!GetAtt VPC.CidrBlock, 6, 8]]],
+            ]
+          - !Select [
+              1,
+              !Split [".", !Select [2, !Cidr [!GetAtt VPC.CidrBlock, 6, 8]]],
+            ]
+          - !Select [
+              2,
+              !Split [".", !Select [2, !Cidr [!GetAtt VPC.CidrBlock, 6, 8]]],
+            ]
+          - "10"
+      InstanceType: t2.micro
+      SecurityGroupIds:
+        - Ref: VPCEc2SecGroup
+      IamInstanceProfile:
+        Ref: VPCInstanceProfile
+      Tags:
+        - Key: Name
+          Value: !Join
+            - ""
+            - - Ref: "AWS::StackName"
+              - "-"
+              - "WebServer"
+      UserData:
+        Fn::Base64:
+          Fn::Sub:
+            - |
+              #!/bin/bash
+              /usr/bin/yum -y install httpd php
+              /sbin/chkconfig httpd on
+              /sbin/service httpd start
+              /bin/echo -n "Welcome to my web server. Server private IP is " > /var/www/html/index.php
+              /opt/aws/bin/ec2-metadata -o | /bin/cut -d" " -f2 >> /var/www/html/index.php
+              /bin/echo -n "Availability Zone: " >> /var/www/html/index.php
+              /opt/aws/bin/ec2-metadata -z | /bin/cut -d" " -f2 >> /var/www/html/index.php
+              /bin/echo "Stack Name: ${thisStack}" >> /var/www/html/index.php
+              /bin/echo "your ip is <?php \$ip = isset(\$_SERVER['HTTP_CLIENT_IP']) ? \$_SERVER['HTTP_CLIENT_IP'] : isset(\$_SERVER['HTTP_X_FORWARDED_FOR']) ? \$_SERVER['HTTP_X_FORWARDED_FOR'] : \$_SERVER['REMOTE_ADDR']; echo \$ip;?>" >> /var/www/html/index.php
+              /bin/echo "" >> /var/www/html/index.php
+              /bin/echo "LoadModule remoteip_module modules/mod_remoteip.so" > /etc/httpd/conf.d/remoteip.conf
+              /bin/echo "RemoteIPHeader X-Forwarded-For" >> /etc/httpd/conf.d/remoteip.conf
+              /bin/echo "RemoteIPInternalProxy 100.64.0.0/10" >> /etc/httpd/conf.d/remoteip.conf
+              /bin/echo "RemoteIPProxyProtocol Off" >> /etc/httpd/conf/httpd.conf
+              /bin/echo "RemoteIPProxyProtocolExceptions 127.0.0.1 100.64.0.0/10" >> /etc/httpd/conf/httpd.conf
+              /sbin/service httpd restart
+            - thisStack: !Ref AWS::StackName
+
+  #VPC Public Subnets
+
+  VPCPublicSubnetA:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId:
+        Ref: VPC
+      CidrBlock: !Select [0, !Cidr [!GetAtt VPC.CidrBlock, 6, 8]]
+      AvailabilityZone:
+        Ref: AvailabilityZoneA
+      MapPublicIpOnLaunch: true
+      Tags:
+        - Key: Name
+          Value: !Join
+            - ""
+            - - Ref: "AWS::StackName"
+              - "-"
+              - "Pub-A Subnet"
+
+  VPCPublicSubnetB:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId:
+        Ref: VPC
+      CidrBlock: !Select [1, !Cidr [!GetAtt VPC.CidrBlock, 6, 8]]
+      AvailabilityZone:
+        Ref: AvailabilityZoneB
+      MapPublicIpOnLaunch: true
+      Tags:
+        - Key: Name
+          Value: !Join
+            - ""
+            - - Ref: "AWS::StackName"
+              - "-"
+              - "Pub-B Subnet"
+
+  VPCPublicSubnetRouteTable:
+    Type: AWS::EC2::RouteTable
+    Properties:
+      VpcId:
+        Ref: VPC
+      Tags:
+        - Key: Name
+          Value: !Join
+            - ""
+            - - Ref: "AWS::StackName"
+              - "-"
+              - "Public Route Table"
+
+  VPCPublicASubnetRouteTableAssociation:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      RouteTableId:
+        Ref: VPCPublicSubnetRouteTable
+      SubnetId:
+        Ref: VPCPublicSubnetA
+
+  VPCPublicBSubnetRouteTableAssociation:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      RouteTableId:
+        Ref: VPCPublicSubnetRouteTable
+      SubnetId:
+        Ref: VPCPublicSubnetB
+
+  VPCInternetGateway:
+    Type: AWS::EC2::InternetGateway
+    Properties:
+      Tags:
+        - Key: Name
+          Value: !Join
+            - ""
+            - - Ref: "AWS::StackName"
+              - "-"
+              - "IGW"
+
+  VPCAttachGateway:
+    Type: AWS::EC2::VPCGatewayAttachment
+    Properties:
+      VpcId:
+        Ref: VPC
+      InternetGatewayId:
+        Ref: VPCInternetGateway
+
+  VPCDirectInternetRoute:
+    Type: AWS::EC2::Route
+    DependsOn: VPCInternetGateway
+    Properties:
+      DestinationCidrBlock: 0.0.0.0/0
+      GatewayId:
+        Ref: VPCInternetGateway
+      RouteTableId:
+        Ref: VPCPublicSubnetRouteTable
+
+  VPCNATEIP:
+    Type: "AWS::EC2::EIP"
+    Properties:
+      Domain: vpc
+
+  VPCNATGateway:
+    DependsOn: VPCAttachGateway
+    Type: "AWS::EC2::NatGateway"
+    Properties:
+      AllocationId:
+        Fn::GetAtt:
+          - VPCNATEIP
+          - AllocationId
+      SubnetId:
+        Ref: VPCPublicSubnetA
+      Tags:
+        - Key: Name
+          Value: !Join
+            - ""
+            - - Ref: "AWS::StackName"
+              - "-"
+              - "NAT Gateway"
+
+  VPCNATInternetRoutePrivate:
+    Type: AWS::EC2::Route
+    DependsOn: VPCInternetGateway
+    Properties:
+      DestinationCidrBlock: 0.0.0.0/0
+      NatGatewayId:
+        Ref: VPCNATGateway
+      RouteTableId:
+        Ref: VPCPrivateSubnetRouteTable
+
+Outputs:
+  # VPC Outputs
+
+  VPC:
+    Description: "VPC"
+    Value: !Ref VPC
+    Export:
+      Name: !Sub "VPC-${AWS::StackName}-VPC"
+  VPCPrivateSubnetA:
+    Description: "VPC Private Subnet A"
+    Value: !Ref VPCPrivateSubnetA
+    Export:
+      Name: !Sub "VPC-${AWS::StackName}-PrivateSubnetA"
+  VPCPrivateSubnetB:
+    Description: "VPC Private Subnet B"
+    Value: !Ref VPCPrivateSubnetB
+    Export:
+      Name: !Sub "VPC-${AWS::StackName}-PrivateSubnetB"
+
+  VPCPrivateSubnetRouteTable:
+    Description: "VPC Private Route Table"
+    Value: !Ref VPCPrivateSubnetRouteTable
+    Export:
+      Name: !Sub "VPC-${AWS::StackName}-PrivateRouteTable"
+  VPCPublicSubnetRouteTable:
+    Description: "VPC Public Route Table"
+    Value: !Ref VPCPublicSubnetRouteTable
+    Export:
+      Name: !Sub "VPC-${AWS::StackName}-PublicRouteTable"
+  VPCServer:
+    Description: "VPC EC2 IP address"
+    Value: !GetAtt VPCServerEc2.PrivateIp
+    Export:
+      Name: !Sub "VPC-${AWS::StackName}-ServerIP"
+  VPCPublicSubnetADCS1:
+    Description: "VPC Public Subnet A"
+    Value: !Ref VPCPublicSubnetA
+    Export:
+      Name: !Sub "VPC-${AWS::StackName}-PublicSubnetA"
+  VPCPublicSubnetBDCS1:
+    Description: "VPC Public Subnet B"
+    Value: !Ref VPCPublicSubnetB
+    Export:
+      Name: !Sub "VPC-${AWS::StackName}-PublicSubnetB"

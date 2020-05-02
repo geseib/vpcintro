@@ -1,17 +1,17 @@
 +++
 title = "Test Connectivity"
 chapter = false
-weight = 42
+weight = 52
 +++
 
 ## Test EC2 Instance connectivity to the internet
-It will take ~1 minute for the EC2 Instance to finish launching.
+It will take a few minutes for the Cloudformation template to to finish launching all of the resources.
 
 
 1. From the **Amazon EC2** console and from the left menu select **Instances**.
 
     ![connect button](/images/testec2-list.png)
-1. Check the box next to your instance in the list and Click the **Connectt** button aboe the list.
+1. Check the box next to the new instance in the list and Click the **Connectt** button aboe the list.
 
     ![connect session manager](/images/testec2-connect.png)
 1. Click the radio button next to  **Session Manager** and click the **Connect** button. _this will bring up a new browser tab with the Linux bash shell_
