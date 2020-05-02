@@ -1,17 +1,12 @@
 +++
-title = "Create Gateways"
+title = "Review"
 chapter = false
-weight = 32
+weight = 38
 +++
 
-## Gateways
+## Create Subnets
 
-We will create three gateways:
-
-- **Internet Gateway**: to proivde internet access for our NAT Gateway, and potentially future public facing load balancers.
-- **Virtual Gateway**: to provide future access to our data centers and other sites via private networking.
-- **NAT Gateway**: to provide internet access outbound for our private resources.
-
+We now are ready to start our connectivity and routing policy.
 Run CloudFormation template 2.tgw-csr.yaml to deploy the Transit Gateway, route Tables, and the Datacenter Router (Cisco CSR).
 
 1. Click on the CloudFormation Launch link below that corresponds to the AWS Region in which you deploy the first stack.

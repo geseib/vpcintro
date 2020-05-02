@@ -6,26 +6,44 @@ weight = 31
 
 ## Create Subnets
 
-We now are ready to start our connectivity and routing policy.
-Run CloudFormation template 2.tgw-csr.yaml to deploy the Transit Gateway, route Tables, and the Datacenter Router (Cisco CSR).
+### We will create four(4) subnets: ###
+2 Public: **PublicA** and **Public B** | 
+2 Private: **PrivateA** and **Private B**  
 
-1. Click on the CloudFormation Launch link below that corresponds to the AWS Region in which you deploy the first stack.
+   Subnet Name | Availability Zone | CIDR block
+   ------------| ------------------|----------
+**PublicA**|us-east-1a|10.64.0.0/24
+**PublicB**|us-east-1b|10.64.1.0/24
+**PrivateA**|us-east-1a|10.64.2.0/24
+**PrivateB**|us-east-1b|10.64.3.0/24
 
-   [![US East (N. Virginia)](https://samdengler.github.io/cloudformation-launch-stack-button-svg/images/us-east-1.svg)](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/create/review?stackName=tgw-csr&templateURL=https://s3.amazonaws.com/{{<codebucket>}}/2.tgw-csr.yaml&param_ParentStack=tgw)
 
-   [![US East (Ohio)](https://samdengler.github.io/cloudformation-launch-stack-button-svg/images/us-east-2.svg)](https://console.aws.amazon.com/cloudformation/home?region=us-east-2#/stacks/create/review?stackName=tgw-csr&templateURL=https://s3.amazonaws.com/{{<codebucket>}}/2.tgw-csr.yaml&param_ParentStack=tgw)
-   [![US West (Oregon)](https://samdengler.github.io/cloudformation-launch-stack-button-svg/images/us-west-2.svg)](https://console.aws.amazon.com/cloudformation/home?region=us-west-2#/stacks/create/review?stackName=tgw-csr&templateURL=https://s3.amazonaws.com/{{<codebucket>}}/2.tgw-csr.yaml&param_ParentStack=tgw)
-   [![EU West (Ireland)](https://samdengler.github.io/cloudformation-launch-stack-button-svg/images/eu-west-1.svg)](https://console.aws.amazon.com/cloudformation/home?region=eu-west-1#/stacks/create/review?stackName=tgw-csr&templateURL=https://s3.amazonaws.com/{{<codebucket>}}/2.tgw-csr.yaml&param_ParentStack=tgw)
-   [![EU West (Singapore)](https://samdengler.github.io/cloudformation-launch-stack-button-svg/images/ap-southeast-1.svg)](https://console.aws.amazon.com/cloudformation/home?region=ap-southeast-1#/stacks/create/review?stackName=tgw-csr&templateURL=https://s3.amazonaws.com/{{<codebucket>}}/2.tgw-csr.yaml&param_ParentStack=tgw)
-   [![AP Northeast (Tokyo)](https://samdengler.github.io/cloudformation-launch-stack-button-svg/images/ap-northeast-1.svg)](https://console.aws.amazon.com/cloudformation/home?region=ap-northeast-1#/stacks/create/review?stackName=tgw-csr&templateURL=https://s3.amazonaws.com/{{<codebucket>}}/2.tgw-csr.yaml&param_ParentStack=tgw)
 
-1. For the **Specify stack details** give the stack a name (compounded names work well. i.e. if the VPC stack created in the setup module was named **TGW1** name this stack **TGW1-CSR**), pick the keypair you created earlier, and enter the name of your first stack (must be entered exactly to work). Click **Next**.
-   ![Stack Parameters](/images/createStack-CSRparameters.png)
+1. From the **Amazon VPC** console and from the left menu select **Subnets**.
+_You will see the subnets for the default VPC (1 for each Availability Zone in the region)_
+![Default subnets](/images/createsubnets-defaultsubnets.png)
 
-1. For **Configuration stack options** we dont need to change anything, so just click **Next** in the bottom right.
+1. Click the **Create subnet** button.
 
-1. Scroll down to the bottom of the **Review name_of_your_stack** and check the **I acknowledge the AWS CloudFormation might create IAM resources with custom names.** Click the **Create** button in the lower right.
-   ![Create Stack](/images/createStack-VPCiam.png)
+1. Create **Public A** subnet in **Availability Zone A** with the following settings:
+    - **Name tag**: **PublicA.
+    - **VPC**: select **_your vpc_** name from the VPC dropdown list.
+    - **Availability Zone**: **us-east-1a**
+    - **IPv4 CIDR block**: **10.64.0.0/24** 
+![Public A subnet](/images/createsubnets-publica.png)
+1. Click the ***create** button.
+![Public Subnet complete](/images/createsubnets-publicacreated.png)
 
-1. wait for the Stack to show **Create_Complete**.
-   ![Stack Complete](/images/createStack-CSRcomplete.png)
+1. After the subnet is created click the **close** button.
+
+1. Repeat the process for the remaining 3 subnets. Make sure to set the Availability Zone and the CIDR block correctly.
+
+    Subnet Name | Availability Zone | CIDR block
+     ------------| ------------------|----------
+    PublicB|us-east-1b|10.64.1.0/24
+    PrivateA|us-east-1a|10.64.2.0/24
+    PrivateB|us-east-1b|10.64.3.0/24
+
+1. When you are done, the VPC subnets console should list all four subnets for your VPC. ![ALl Subnets Complete](/images/createsubnets-complete.png)
+
+### You have completed the Subnet creation. ###
