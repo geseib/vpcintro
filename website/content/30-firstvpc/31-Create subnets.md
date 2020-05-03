@@ -26,8 +26,8 @@ _You will see the subnets for the default VPC (1 for each Availability Zone in t
 1. Click the **Create subnet** button.
 
 1. Create **Public A** subnet in **Availability Zone A** with the following settings:
-    - **Name tag**: **PublicA.
-    - **VPC**: select **_your vpc_** name from the VPC dropdown list.
+    - **Name tag**: **PublicA**.
+    - **VPC**: select **_your vpc_** name from the dropdown list.
     - **Availability Zone**: **us-east-1a**
     - **IPv4 CIDR block**: **10.64.0.0/24** 
 ![Public A subnet](/images/createsubnets-publica.png)

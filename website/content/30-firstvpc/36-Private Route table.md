@@ -4,12 +4,12 @@ chapter = false
 weight = 36
 +++
 
-## Create a Private route tables
+## Create a Private route table
 
 We now are ready to define our next routing policy. This time for the private subnets.
 
 ![Route tables Diagram](/images/routetables-diagram.png)
-1. From the **Amazon VPC** console and from the left menu select **Route tabless**.
+1. From the **Amazon VPC** console and from the left menu select **Route tables**.
     ![Route tables](/images/routetables-list.png)
 
 1. Click the Create **Route table** button.

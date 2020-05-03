@@ -4,12 +4,12 @@ chapter = false
 weight = 35
 +++
 
-## Create a Public route tables
+## Create a Public route table
 
 We now are ready to define our routing policy. While there is a Main route table that all subnets are currently associated with, we are going to create route tables for each of our tiers: public and private. Let's start with the public route table...
 
 ![Route tables Diagram](/images/routetables-diagram.png)
-1. From the **Amazon VPC** console and from the left menu select **Route tabless**.
+1. From the **Amazon VPC** console and from the left menu select **Route tables**.
     ![Route tables](/images/routetables-list.png)
 
 1. Click the Create **Route table** button.

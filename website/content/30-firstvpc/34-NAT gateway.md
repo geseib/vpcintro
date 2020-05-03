@@ -19,9 +19,9 @@ A NAT Gateway provides outbound internet access to private resources in our VPC.
 1. Create the **NAT Gateway** using the bellow steps. Click the **Create** button at the bottom right, when you are done.
     - Select the ”PublicA” subnet from the **Subnet** dropdown list.
     - Click the **Allocate Elastic IP address** button to automatically create and fill the **Elastic IP Allocation ID**.
-    - uptional:Add a Tag with the Key – **Name** and a Value such as **yourVPC-NATGW**
+    - _Optional:Add a Tag with the Key – **Name**, and a Value such as **myVPC-NATGW**_
 
     ![NGW Created](/images/creategateways-ngwcreated.png)
 1. Click the **Close** button once the NAT Gateway has been created. _We will edit the route tables later._
 
-### You have completed the NAT Gateway Creationion. ###
+### You have completed the NAT Gateway Creation. ###

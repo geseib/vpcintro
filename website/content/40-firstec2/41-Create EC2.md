@@ -17,6 +17,10 @@ We will now launch an Linux EC2 Instance into a private subnet. We will attach t
     ![Select AMI](/images/ec2-selectami.png)
 1. Click the **Select** button to the right of the first AMI in the list, **Amazon Linux 2 AMI**.
 
+    ![Select Instance type](/images/ec2-instancetype.png)
+1. leave the **Instance type** as **t2.micro**. Click the **Next: Configure Instance Details** button in the bottom right.
+
+
     ![Configure details](/images/ec2-details.png)
 1. Let's configure the instance to launch in the Private A subnet in your VPC with the IAM role you created using the following settings:
     - **Network**: Select **your_VPC** from the dropdown list.
@@ -34,7 +38,7 @@ We will now launch an Linux EC2 Instance into a private subnet. We will attach t
     - **Vaule**: Name your instance something like **myEC2**
     - Click **Next: Configure Security Group** button in the bottom right.
 
-    ![Configure tags](/images/ec2-securitygroup.png)
+    ![Configure security group](/images/ec2-securitygroup.png)
 1. Since we are using Systems Manager to access the server, we do not need TCP port 22 opened on the  Inbound Security Group.
 Click the **X** to the right of the SSH rule to delete it.
 _Instead Systems Manager uses an agent on the Operating System to initiate the connection to the Systems Manager services. Security is controlled by Systems Manager and IAM._ Click **Review and Launch** button.
