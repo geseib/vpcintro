@@ -1,10 +1,10 @@
 +++
-title = "Create Internet Gateway"
+title = "Create Target Group"
 chapter = false
-weight = 32
+weight = 62
 +++
 
-### Internet Gateway
+### Create Taget Group
 
 An Internet Gateway is required to provide internet access to and from your VPC.
 ![Gateways Diagram](/images/creategateways-diagram.png)

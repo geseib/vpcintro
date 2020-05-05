@@ -1,10 +1,10 @@
 +++
-title = "Create Internet Gateway"
+title = "Attach VPCs"
 chapter = false
-weight = 32
+weight = 72
 +++
 
-### Internet Gateway
+### Attach VPCs
 
 An Internet Gateway is required to provide internet access to and from your VPC.
 ![Gateways Diagram](/images/creategateways-diagram.png)
