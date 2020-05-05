@@ -6,16 +6,29 @@ weight = 70
 
 ## Create Transit Gateway
 
-We will use a cloudfromation template that builds out all of the components we built manually before, creating a new VPC, subnets, gateways, and an EC2 instance. This type of Infrastrucutre as code can create consistent repeatable configurations, as well as provide a faster path to production.
+We will use a Transit Gateway to route between the two VPCs. Lets creat the Trasnit Gateway now.
 
-1. Click on the CloudFormation Launch link below that corresponds to the AWS Region in which you want to deploy the workshop.
 
-   [![US East (N. Virginia)](https://samdengler.github.io/cloudformation-launch-stack-button-svg/images/us-east-1.svg)](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/create/review?stackName=myvpc2&templateURL=https://s3.amazonaws.com/{{<codebucket>}}/networkingdemos-vpcintro.yml&param_AvailabilityZoneA=us-east-1a&param_AvailabilityZoneB=us-east-1b&param_VPCCIDR=10.65.0.0/16)
+![TGW Console](/images/tgw-list.png)
+1. From the **Amazon VPC** console and from the left menu scroll down and select **Transit Gateways**. Click the **Create Transit Gateway** button.
 
-   ![Accept defaults](/images/2ndvpc-ack.png)
+    ![Create TGW](/images/tgw-create.png)
+1. Configure the **Transit Gateway** with the following selections:
+    - **Name tag**: give the Transit Gateway a name, such as **myTGW**.
+    - **Description**: give the Transit Gateway a description, such as **First TGW**
+    - **Amazon side ASN**: enter **65000** _best practice for TGWs that you want to peer: set a unique ASN between TGWs_
+    - **DNS support**: checked
+    - **VPN ECMP support**: checked
+    - **Default route table association**: **UN**checked
+    - **Default route table propagation**: **UN**checked
+    - **Multicast support**: **UN**checked
+    - **Auto accept shared attachments**: **check**
+    - Click the **Create Transit Gateway** button.
 
-1. Leave the parameters at their defaults. Scroll down to the bottom of the **Quick create stack** screen and check the **I acknowledge that AWS CloudFormation might create IAM resources with custom names.** Click the **Create** button in the lower right.
+    _Be sure to uncheck the Default route table association and propagation_
 
-1) After about 3-5 minutes, your VPC will be deployed with a new EC2 Instance.
+    ![TGW Created](/images/tgw-created.png)
+1. Click the **Close** button once the TGW has been created.
 
-### You have completed the Launch VPC.
+
+### You have completed the Create TGW.

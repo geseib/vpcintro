@@ -6,26 +6,52 @@ weight = 74
 
 ### Propagate VPC CIDR to Route table
 
-A NAT Gateway provides outbound internet access to private resources in our VPC. We will need this to connect to and be able to install packages on our EC2 instance later.
-![Gateways Diagram](/images/creategateways-diagram.png)
+Propagating A VPC CIDR to a Transit Gateway route table, populates the Transit Gateway route table with a route to the VPC. You can propagate an Attachment to as many route tables as you need within the Transit Gateway.
 
-1. From the **Amazon VPC** console and from the left menu select **NAT Gateways**.
-   ![NGWs](/images/creategateways-ngws.png)
+We will repeat the process for VPC64 and VPC65 (_be sure to do both VPCs)
 
-1. Click the Create **NAT Gateway** button.
 
-   ![NGW create](/images/creategateways-createngw.png)
+#### VPC 10.64.0.0/16 Propagation (First VPC)
+1. From the **Amazon VPC** console and from the left menu select **Transit Gateway Route tables**.
+   ![Route tables](/images/tgw-prop-list.png)
 
-1. Create the **NAT Gateway** using the bellow steps. Click the **Create** button at the bottom right, when you are done.
+1. Click the **Action** button, and select **Create Propagation**.
 
-   - Select the ”PublicA” subnet from the **Subnet** dropdown list.
-   - Click the **Allocate Elastic IP address** button to automatically create and fill the **Elastic IP Allocation ID**.
-   - _Optional:Add a Tag with the Key – **Name**, and a Value such as **myVPC-NATGW**_
+   ![Propagation create](/images/tgw-prop-vpc64-create.png)
 
-   ![NGW Created](/images/creategateways-ngwcreated.png)
+1. Create the **Propagation** by selecting the **VPC64** Attachment from the dropdown list.
+    - Click the **Create Propagation** button.
 
-1. Click the **Close** button once the NAT Gateway has been created. _We will edit the route tables later._
+    ![Propagation Created](/images/tgw-prop-vpc64-created.png)
+1. Click the **Close** button once the TGW has been created.
 
-1. Record the DNS name for your NLB
+#### VPC 10.65.0.0/16 Propagation (the other VPC!)
+1. From the **Amazon VPC** console and from the left menu select **Transit Gateway Route tables**.
+   ![Route tables](/images/tgw-prop-list.png)
 
-### You have completed the NAT Gateway Creation.
+1. Click the **Action** button, and select **Create Propagation**.
+
+   ![Propagation create](/images/tgw-prop-vpc65-create.png)
+
+1. Create the **Propagation** by selecting the **VPC65** Attachment from the dropdown list. (_it will be the one with an **Associated route table** listed_) )
+    - Click the **Create Propagation** button.
+
+    ![Propagation Created](/images/tgw-prop-vpc65-created.png)
+1. Click the **Close** button once the TGW has been created.
+
+#### Verify that routes are propagating
+
+
+1. With the Route table selected from the list, you can click the **Propagations** tab in the details pane below the list. 
+
+   ![Propagation](/images/tgw-rt-props.png)
+1. you should see two VPC Attachments   
+
+1. Now, click the **Routes** tab in the details pane below the list. 
+
+   ![Routes](/images/tgw-rt-routes.png)
+1. you should see two routes:
+    - 10.64.0.0/16
+    - 10.65.0.0/16
+
+### You have completed the Transit Gateway Propagations.

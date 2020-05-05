@@ -6,24 +6,41 @@ weight = 75
 
 ### Edit VPC Private Route tables
 
-A NAT Gateway provides outbound internet access to private resources in our VPC. We will need this to connect to and be able to install packages on our EC2 instance later.
-![Gateways Diagram](/images/creategateways-diagram.png)
+We need to define when traffic gets routed to our Transit Gateway from each VPC subnet. In our case, we want all RFC 1918 10.0.0.0/8 traffic to be routed to the Transit Gateway. We will let the Transit Gateway provide more detailed routing. 
 
-1. From the **Amazon VPC** console and from the left menu select **NAT Gateways**.
-   ![NGWs](/images/creategateways-ngws.png)
+We will repeat the process for VPC64 and VPC65 (_be sure to do both VPCs)
 
-1. Click the Create **NAT Gateway** button.
 
-   ![NGW create](/images/creategateways-createngw.png)
+#### VPC64 Private Route table (First VPC)
+1. From the **Amazon VPC** console and from the left menu select **Route tables** (_it will be near the top of the list_).
+   ![Route tables](/images/tgw-vpc-rt-vpc64-list.png)
 
-1. Create the **NAT Gateway** using the bellow steps. Click the **Create** button at the bottom right, when you are done.
+1. Click the **Action** button, and select **Edit routes**.
 
-   - Select the ”PublicA” subnet from the **Subnet** dropdown list.
-   - Click the **Allocate Elastic IP address** button to automatically create and fill the **Elastic IP Allocation ID**.
-   - _Optional:Add a Tag with the Key – **Name**, and a Value such as **myVPC-NATGW**_
+   ![Edit Route](/images/tgw-vpc-rt-vpc64-edit.png)
 
-   ![NGW Created](/images/creategateways-ngwcreated.png)
+1. Click the **Add routes** botton, at the bottom of the route list. 
+   - Enter **10.0.0.0/8** for the destination
+   - For the **Target** select **Transit Gateway** from the dropdown list and pick your **TGW** (_it will have an id like tgw-0700a345567b23f0_)
+   - Click the **Save Route** button.
 
-1. Click the **Close** button once the NAT Gateway has been created. _We will edit the route tables later._
+    ![Route edited](/images/tgw-vpc-rt-edited.png)
+1. Click the **Close** button once the route table has been edited.
 
-### You have completed the NAT Gateway Creation.
+#### VPC64 Private Route table (the other VPC!)
+1. From the **Amazon VPC** console and from the left menu select **Route tables** (_it will be near the top of the list_).
+   ![Route tables](/images/tgw-vpc-rt-vpc65-list.png)
+
+1. Click the **Action** button, and select **Edit routes**.
+
+   ![Edit Route](/images/tgw-vpc-rt-vpc65-edit.png)
+
+1. Click the **Add routes** botton, at the bottom of the route list. 
+   - Enter **10.0.0.0/8** for the destination
+   - For the **Target** select **Transit Gateway** from the dropdown list and pick your **TGW** (_it will have an id like tgw-0700a345567b23f0_)
+   - Click the **Save Route** button.
+
+    ![Route edited](/images/tgw-vpc-rt-edited.png)
+1. Click the **Close** button once the route table has been edited.
+
+### You have completed the Subnet Route editing.

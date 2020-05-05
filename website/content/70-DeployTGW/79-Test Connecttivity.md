@@ -4,72 +4,57 @@ chapter = false
 weight = 79
 +++
 
-## Test connectivity across Trasnit Gateway
+## Test connectivity across Transit Gateway
 
-It will take ~1 minute for the EC2 Instance to finish launching.
+Now if we have complete all the steps we should be able to test connectivity across the TGW. We will be testing from the first EC2 instance that you created in VPC 10.64.0.0/16. It has an address of **10.64.2.10**. We will be pinging across the Transit Gateway to **10.65.2.10**
 
 1. From the **Amazon EC2** console and from the left menu select **Instances**.
 
-   ![connect button](/images/testec2-list.png)
+   ![connect button](/images/tgw-test-diagram.png)
 
-1. Check the box next to your instance in the list and Click the **Connect** button aboe the list.
+1. Check the box next to your instance in VPC64 and Click the **Connect** button aboe the list.
 
    ![connect session manager](/images/testec2-connect.png)
 
 1. Click the radio button next to **Session Manager** and click the **Connect** button. _this will bring up a new browser tab with the Linux bash shell_
 
-   ![ping test](/images/testec2-ping.png)
+   ![ping test](/images/tgw-test-ping.png)
 
-1. At the **sh-4.2\$** prompt,curl **vpc65.example.aws**.\_
+1. At the **sh-4.2\$** prompt,ping **10.65.2.10**.\_
 
    ```
-   curl vpc65.example.aws
+   ping 10.65.2.10
    ```
 
    This will return something like the following
 
    ```
-   PING www.example.com (93.184.216.34) 56(84) bytes of data.
-   64 bytes from 93.184.216.34 (93.184.216.34): icmp_seq=1 ttl=52 time=1.55 ms
-   64 bytes from 93.184.216.34 (93.184.216.34): icmp_seq=2 ttl=52 time=0.939 ms
-   64 bytes from 93.184.216.34 (93.184.216.34): icmp_seq=3 ttl=52 time=0.814 ms
+   sh-4.2$ ping 10.65.2.10
+   PING 10.65.2.10 (10.65.2.10) 56(84) bytes of data.
+   64 bytes from 10.65.2.10: icmp_seq=1 ttl=254 time=1.14 ms
+   64 bytes from 10.65.2.10: icmp_seq=2 ttl=254 time=0.930 ms
+   64 bytes from 10.65.2.10: icmp_seq=3 ttl=254 time=0.830 ms
    ^C
-   --- www.example.com ping statistics ---
-   3 packets transmitted, 3 received, 0% packet loss, time 2003ms
-   rtt min/avg/max/mdev = 0.814/1.102/1.555/0.326 ms
+   --- 10.65.2.10 ping statistics ---
+   3 packets transmitted, 3 received, 0% packet loss, time 2002ms
+   rtt min/avg/max/mdev = 0.830/0.969/1.149/0.137 ms
+   sh-4.2$
    ```
 
-   1. We can determine what public IP address you are using to get to the internet resource by the following command:
 
-   ```
-   dig +short myip.opendns.com @resolver1.opendns.com
-   ```
+### Bonus - Can you solve this
+There is a web server running on 10.65.2.10. You can also use **curl** and **curl 10.65.2.10**, but there is something missing in the Security group for the 10.65.2.10 EC2 instance. Can you figure it out?  __note: curl allows  us to see an http page in the bash shell. The web server is running on TCP port 80_
 
-   That will return something like:
+   ![ping test](/images/tgw-test-sg.png)
 
-   ```
-   h-4.2$ dig +short myip.opendns.com @resolver1.opendns.com
-   54.85.184.24
-   ```
+When completed you should see something like the following:
+   ![ping test](/images/tgw-test-curl.png)
 
-   You can also try the following:
 
-   ```
-   curl www.example.com
-   ping www.amazon.com
-   ```
 
 ### Troubleshooting
 
-If you have any issues, it likely shows up with the fact that you cannot connect to the Ec2 Instance. See if you can troubleshoot it yourself, walking through the steps.
+If you are unable to ping across, go back and check the route tables. The most common issue is that the private route tables in the VPCs do not have the route to **10.0.0.0/8** pointing to the TGW. 
 
-The following are good places to start:
-There are several steps that could be causing the issue.
-
-1. Is the ec2 Instance in a **Private** subnet?
-1. Is the IAM role you created attached to the EC2 instance
-1. Does the IAM role have the **AmazonSSMManagedInstanceCore**
-1. Are the correct route tables attached the subnets (Public route table to both public subnets and the PRivate route table to the Private subnets)
-1. Did you add the 0.0.0.0/0 route to the IGW on the public route table and the 0.0.0.0/0 route to the NGW on the private route table.
 
 ## You have completed the Lab.

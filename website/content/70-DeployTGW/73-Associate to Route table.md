@@ -6,28 +6,46 @@ weight = 73
 
 ### Associate VPCs to Route table
 
-A Virtual Private Gateway is used to provide private access to your data center and other locations using a VPN or AWS DIrect Connect (a dedicated connection). We will set one up in assuming we will connect a datacenter.
-![Gateways Diagram](/images/creategateways-diagram.png)
+Associating A VPC Attachment to a Transit Gateway route table, tells the Transit Gateway which route table to use when traffic comes from this Attachment.
 
-1. From the **Amazon VPC** console and from the left menu select **Virtual Gateways**.
-   ![IGWS](/images/creategateways-vgws.png)
+We will repeat the process for VPC64 and VPC65 (_be sure to do both VPCs)
 
-1. Click the **Create Virtual Private Gateway** button.
 
-   ![IGW create](/images/creategateways-createvgw.png)
+#### VPC 10.64.0.0/16 Association (First VPC)
+1. From the **Amazon VPC** console and from the left menu select **Transit Gateway Route tables**.
+   ![Route tables](/images/tgw-assoc-list.png)
 
-1. Name the **Virtual Private Gateway** using a **Name tag**, such as **myVPC-VGW**. Leave the **ASN** as **Amazon default ASN**. _Amazon default ASN will be 64512._ Click the **Create** button at the bottom right.
+1. Click the **Action** button, and select **Create association**.
 
-   ![VGW Created](/images/creategateways-vgwcreated.png)
+   ![Association create](/images/tgw-assoc-vpc64-create.png)
 
-1. Click the **Close** button once the Virtual Private Gateway has been created.
+1. Create the **Association** by selecting the **VPC64** Attachment from the dropdown list.
+    - Click the **Create association** button.
 
-   ![VGW List](/images/creategateways-attachvgwlist.png)
+    ![Association Created](/images/tgw-assoc-vpc64-created.png)
+1. Click the **Close** button once the TGW has been created.
 
-1. Click the Action button above the list, and select Attach to VPC.
+#### VPC 10.65.0.0/16 Association (the other VPC!)
+1. From the **Amazon VPC** console and from the left menu select **Transit Gateway Route tables**.
+   ![Route tables](/images/tgw-assoc-list.png)
 
-   ![Attach VGW](/images/creategateways-attachvgw.png)
+1. Click the **Action** button, and select **Create association**.
 
-1. Select your VPC from the list, and click the Attach button.
+   ![Association create](/images/tgw-assoc-vpc65-create.png)
 
-### You have completed the Virutal Private Gateway Creation.
+1. Create the **Association** by selecting the **VPC65** Attachment from the dropdown list. (_it will be the one with an **Associated route table** listed_) )
+    - Click the **Create association** button.
+
+    ![Association Created](/images/tgw-assoc-vpc65-created.png)
+1. Click the **Close** button once the TGW has been created.
+
+#### Verify that Attachments are associated
+
+
+1. With the Route table selected from the list, you can click the **Associations** tab in the details pane below the list. 
+
+   ![Association](/images/tgw-rt-assocs.png)
+1. you should see two VPC Attachments   
+
+
+### You have completed the Transit Gateway Associations.

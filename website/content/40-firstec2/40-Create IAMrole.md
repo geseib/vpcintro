@@ -8,7 +8,7 @@ weight = 40
 
 IAM Roles can be used as Instance Profiles, giving the EC2 instance permissions. For example, this could be to permit access to Amazon S3 for object storage or to DynamoDB for NoSQL queries. In this case we are using it for remote bash access using AWS Systems Manager.
 
-![IAM Roles](/images/iam-roles.png)
+    ![IAM Roles](/images/iam-roles.png)
 1. From the **Amazon IAM** console and from the left menu select Roles. Click **Create role** button.
 
     ![Select trusted Entity](/images/iam-selectentity.png)
