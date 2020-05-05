@@ -45,8 +45,7 @@ We will repeat the process for VPC64 and VPC65 (_be sure to do both VPCs)
 1. With the Route table selected from the list, you can click the **Associations** tab in the details pane below the list. 
 
    ![Association](/images/tgw-rt-assocs.png)
-   
-1. You should see two VPC Attachments   
+   _You should see two VPC Attachments_
 
 
 ### You have completed the Transit Gateway Associations.
