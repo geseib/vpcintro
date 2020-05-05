@@ -20,7 +20,7 @@ Now lets deploy a Transit Gateway to connect our two VPCs.
 
 1. Associate both VPCs to the Transit Gateway route table
 
-1. Propagate both VPCs to the transit Gateway route table
+1. Propagate both VPCs to the Transit Gateway route table
 
 1. Edit the Private Subnet route tables for both VPCs
 

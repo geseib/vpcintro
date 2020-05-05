@@ -50,7 +50,7 @@ We will repeat the process for VPC64 and VPC65 (_be sure to do both VPCs)
 1. Now, click the **Routes** tab in the details pane below the list. 
 
    ![Routes](/images/tgw-rt-routes.png)
-1. you should see two routes:
+1. You should see two routes:
     - 10.64.0.0/16
     - 10.65.0.0/16
 

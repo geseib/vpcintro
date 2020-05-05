@@ -9,7 +9,7 @@ weight = 72
 An Transit Gateway VPC Attachment needs to place an ENI into each Availability Zone that you use in your VPC. You will be placing them in the **PrivateA** and **PrivateB** subnets.
 ![Gateways Diagram](/images/tgw-att-diagram.png)
 
-We will repeat the process for VPC64 and VPC65 (_be sure to do both VPCs)
+We will repeat the process for VPC64 and VPC65 (_be sure to do both VPCs_)
 
 
 #### VPC 10.64.0.0/16 Attachment (First VPC)
@@ -66,4 +66,4 @@ We will repeat the process for VPC64 and VPC65 (_be sure to do both VPCs)
 Verify you have two attachments in the list. _They will have a **State** of **pending** for a few minutes until they are **available**. you may need to refresh by click the refresh icon above the table._
 
 
-### You have completed the Transit Gateway Attachments.
+### You have completed the Transit Gateway Attachments._

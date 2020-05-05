@@ -6,7 +6,7 @@ weight = 70
 
 ## Create Transit Gateway
 
-We will use a Transit Gateway to route between the two VPCs. Lets creat the Trasnit Gateway now.
+We will use a Transit Gateway to route between the two VPCs. Lets create the Transit Gateway now.
 
 
 ![TGW Console](/images/tgw-list.png)

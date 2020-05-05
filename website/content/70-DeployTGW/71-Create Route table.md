@@ -11,7 +11,7 @@ We can have multiple route tables in our Transit Gateway. Route tables define ro
 1. From the **Amazon VPC** console and from the left menu select **Transit Gateway Route tables**. Click **Create Transit Gateway Route Table**.
 
    ![Create TGW Route table](/images/tgw-rt-create.png)
-1. Give the route table a name, such as **Dev route table** and **Select the Trasnit Gateway ID** from the dropdown list for your TGW. Click the **Create Transit Gateway Route Table** button at the bottom right.
+1. Give the route table a name, such as **Dev route table** and **Select the Transit Gateway ID** from the dropdown list for your TGW. Click the **Create Transit Gateway Route Table** button at the bottom right.
 
    ![TGW Route table created](/images/tgw-rt-created.png)
 1. Click the **Close** button once the TGW route table has been created.
