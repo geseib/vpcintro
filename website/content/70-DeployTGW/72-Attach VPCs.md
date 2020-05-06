@@ -23,7 +23,7 @@ We will repeat the process for VPC64 and VPC65 (_be sure to do both VPCs_)
 1. Configure the **Transit Gateway Attachment** with the following selections:
     - **Transit Gateway ID**: select your TGW from the dropdown list.
     - **Attachment tpye**: leave as **VPC**.
-    - **Attachment name tag**: enter a name, such as **VPC64*
+    - **Attachment name tag**: enter a name, such as **VPC64**
     - **DNS support**: leave checked
     - **IPv6**: leave unchecked
     - **VPC ID**: select VPC with **10.64.0.0/16** from the list
@@ -48,7 +48,7 @@ We will repeat the process for VPC64 and VPC65 (_be sure to do both VPCs_)
 1. Configure the **Transit Gateway Attachment** with the following selections:
     - **Transit Gateway ID**: select your TGW from the dropdown list.
     - **Attachment tpye**: leave as **VPC**.
-    - **Attachment name tag**: enter a name, such as **VPC65*
+    - **Attachment name tag**: enter a name, such as **VPC65**
     - **DNS support**: leave checked
     - **IPv6**: leave unchecked
     - **VPC ID**: select VPC with **10.65.0.0/16** from the list

@@ -26,7 +26,13 @@ We will now launch an Linux EC2 Instance into a private subnet. We will attach t
     - **Network**: Select **your_VPC** from the dropdown list.
     - **Subnet**: Select **PrivateA** subnet from the dropdown list.
     - **IAM Role**: Select **your_role** you just created from the dropdown list.
+
+    ![Configure IP address](/images/ec2-ip.png)
+1. Scroll down to **Network Interfaces** and edit the IP address:
+    - **Primary IP**: Enter **10.64.2.10** on the **eth0** line.
     - Click **Next: Add Storage** button in the bottom right.
+    
+    _normally, we would let EC2 auto-assign the IP, but to make troubleshooting simple for the lab, we are going to set it explicitly._
 
     ![Configure storage](/images/ec2-storage.png)
 1. Leave Storage at its defaults. Click **Next: Add Tags** button.
