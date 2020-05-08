@@ -1,7 +1,7 @@
-baseURL = "https://networkshopdev.aws.seibtribe.com"
+baseURL = "https://vpcintro.aworkshop.io"
 languageCode = "en-us"
 defaultContentLanguage = "en"
-title = "AWS Networking Workshop"
+title = "AWS VPC Workshop"
 theme = "learn"
 uglyurls = true
 sectionPagesMenu = "main"
@@ -9,7 +9,7 @@ pygmentsCodeFences = true
 pygmentsStyle = "monokai"
 
 [params]
-editURL = "https://github.com/geseib/awsnetworkshop/edit/master/website/content/"
+editURL = "https://github.com/geseib/vpcintro/edit/master/website/content/"
 themeVariant = "mine"
 showVisitedLinks = true
 description = "AWS Networking Workshop"
@@ -31,7 +31,7 @@ hrefTargetBlank = true
 
 [[menu.shortcuts]]
 name = "<i class='fab fa-github'></i> GitHub Project"
-url = "https://github.com/geseib/awsnetworkshop"
+url = "https://github.com/geseib/vpcintro"
 weight = 30
 
 [[menu.shortcuts]]
