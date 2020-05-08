@@ -6,16 +6,24 @@ weight = 60
 
 ## Create Security Groups
 
-We will use a cloudfromation template that builds out all of the components we built manually before, creating a new VPC, subnets, gateways, and an EC2 instance. This type of Infrastrucutre as code can create consistent repeatable configurations, as well as provide a faster path to production.
+Security groups act as virtual statefull firewall for your instances to control inbound and outbound traffic. We will be adding a security group to our Launch instance to allow auto scaling EC2 instances to allow traffic on TCP port 80, for http.
 
-1. Click on the CloudFormation Launch link below that corresponds to the AWS Region in which you want to deploy the workshop.
+   ![Security Group](/images/nlb-sg-list.png)
+1. From the **Amazon EC2** console and from the left menu, mid-way down, select **Security Groups**. Click the **Create security group** button.
 
-   [![US East (N. Virginia)](https://samdengler.github.io/cloudformation-launch-stack-button-svg/images/us-east-1.svg)](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/create/review?stackName=myvpc2&templateURL=https://s3.amazonaws.com/{{<codebucket>}}/networkingdemos-vpcintro.yml&param_AvailabilityZoneA=us-east-1a&param_AvailabilityZoneB=us-east-1b&param_VPCCIDR=10.65.0.0/16)
+   ![connect button](/images/nlb-sg.png)
 
-   ![Accept defaults](/images/2ndvpc-ack.png)
+1. Configure the Security Group with the following settings:
+   - **Security Group Name**: name it, like **VPC65-NLB-EC2**
+   - **Description**: give it a description.
+   - **VPC**: Select the 2nd VPC (10.65.0.0/8) from the dropdown list.
 
-1. Leave the parameters at their defaults. Scroll down to the bottom of the **Quick create stack** screen and check the **I acknowledge that AWS CloudFormation might create IAM resources with custom names.** Click the **Create** button in the lower right.
+   ![connect button](/images/nlb-sg-rule.png)
+1. Scroll down and click the **Add rule** button and enter the following rule:
+   - **Type**: **http**
+   - **Destination**: Keep **Custom** and enter **10.0.0.0/8**.
+   - Click the **Create security group** button.
 
-1) After about 3-5 minutes, your VPC will be deployed with a new EC2 Instance.
 
-### You have completed the Launch VPC.
+
+### You have created the Security Group.

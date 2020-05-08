@@ -6,26 +6,35 @@ weight = 64
 
 ### Network Load Balancer
 
-A NAT Gateway provides outbound internet access to private resources in our VPC. We will need this to connect to and be able to install packages on our EC2 instance later.
-![Gateways Diagram](/images/creategateways-diagram.png)
+{Network Load Balancer](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/introduction.html)A functions at the fourth layer of the Open Systems Interconnection (OSI) model. It can handle millions of requests per second. 
 
-1. From the **Amazon VPC** console and from the left menu select **NAT Gateways**.
-   ![NGWs](/images/creategateways-ngws.png)
+  ![NLBs](/images/nlb-nlbs.png)
+1. From the **Amazon EC2** console and from the left menu, near the bottom, select **Load Balancers**. Click the **Create Load Balancer** button.
 
-1. Click the Create **NAT Gateway** button.
+   ![Select NLB](/images/nlb-select.png)
 
-   ![NGW create](/images/creategateways-createngw.png)
+1. Click the Center **Create** button for the **Network Load Balancer**.
 
-1. Create the **NAT Gateway** using the bellow steps. Click the **Create** button at the bottom right, when you are done.
+   ![create NLB](/images/nlb-asg-config.png)
+1. Create an **Network Load Balancer** with the following:
+   - Leave the **Choose target type** as **Instances**.
+   - **Name**: name it, like **VPC65-NLB-Internal**.
+   - Change the **Schema** to **internal**. _It will only get private IPs.
+   - Leave the Liseners at default: **TCP**: and Port **80**.
+   - **VPC**: select the myvpc2-VPC **10.65.0.0/16** from the dropdown list.
+   - **Subnet**: Check both **Availability Zones** and Select both of the private subnets **myvpc2-Priv-A** and **myvpc2-Priv-B**.
+   - Click the **Next Confgiure Security Settings**
 
-   - Select the ”PublicA” subnet from the **Subnet** dropdown list.
-   - Click the **Allocate Elastic IP address** button to automatically create and fill the **Elastic IP Allocation ID**.
-   - _Optional:Add a Tag with the Key – **Name**, and a Value such as **myVPC-NATGW**_
+   ![Security](/images/nlb-asg-sec.png)
+1. If you were using TLS, this is where you would configure the Certificate and Security policy (which defines which TLS protocols and SSL Ciphers are allowed). For the lab, we are using HTTP. Click the **Next: Configure Routing**. 
 
-   ![NGW Created](/images/creategateways-ngwcreated.png)
+   ![Routing](/images/nlb-asg-routing.png)
+1. **Cofigure Routing** with the following:
+   - For **Target Group** select **Existing target group**. _if this is not an option then your target group is not configured correctly. Check to make sure you used **TCP** for the protocol and the correct **VPC**.
+   - **Name**: select your *Target group** from the dropdown list.
+   - **Health checks**: Keep as **HTTP** for the **Protocol** and **/** for the **Path**.
+   - Click the **Next: Register Targets** button.
 
-1. Click the **Close** button once the NAT Gateway has been created. _We will edit the route tables later._
 
-1. Record the DNS name for your NLB
 
-### You have completed the NAT Gateway Creation.
+   ## You have created the Target group.

@@ -6,28 +6,28 @@ weight = 62
 
 ### Create Taget Group
 
-An Internet Gateway is required to provide internet access to and from your VPC.
-![Gateways Diagram](/images/creategateways-diagram.png)
+[Target groups](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-target-groups.html) is used to route requests to one or more registered targets. This is where our Auto scaling group will place EC2 instances created from our Launch template. The **Network Load Balancer** will send traffic to the Target group.
 
-1. From the **Amazon VPC** console and from the left menu select **Internet Gateways**.
-   ![IGWS](/images/creategateways-igws.png)
+   ![target group](/images/nlb-tgs.png)
+1. From the **Amazon EC2** console and from the left menu, near the bottom, select **Target groups**. Click the **Create Target group** button.
 
-1. Click the **Create Internet Gateway** button.
+   ![basic config](/images/nlb-tg-basic.png)
 
-   ![IGW create](/images/creategateways-createigw.png)
+1. Create a launch template with the following **Basic Configuration**:
+   - Leave the **Choose target type** as **Instances**.
+   - **Target group name**: name it, like **basicwebservers**.
+   - **Protocal and Port**: Change to **TCP** and **80**.
+   - **VPC**: select the 2ndVPC **10.65.0.0/16** from the dropdown list.
 
-1. Name the **Internet Gateway** using a **Name tag**, such as **myVPC-IGW**. Click the **Create** button at the bottom right.
 
-   ![IGW Created](/images/creategateways-igwcreated.png)
+   ![health check](/images/nlb-tg-health.png)
 
-1. Click the **Close** button once the Internet Gateway has been created.
+1. Scroll down to **Health checks** and configure the following:
+   - Change the health check to **HTTP** from the dropdown
+   - Leave the **Health check path set to **/**
+   - click the **Next** button.
 
-   ![IGW List](/images/creategateways-attachigwlist.png)
+   ![register targets](/images/nlb-tg-register.png)
+1. We will hold off on registering targets, as we will allow the auto scaling group to do that for us. Scroll down and click the **Create taget group** button.
 
-1. Click the Action button above the list, and select Attach to VPC.
-
-   ![Attach IGW](/images/creategateways-attachigw.png)
-
-1. Select your VPC from the list, and click the Attach button.
-
-### You have completed the Internet Gateway Creation.
+## You have created the Target group.
