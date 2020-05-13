@@ -19,10 +19,10 @@ Security groups act as virtual statefull firewall for your instances to control 
    - **VPC**: Select the 2nd VPC (10.65.0.0/8) from the dropdown list.
 
    ![connect button](/images/nlb-sg-rule.png)
-1. Scroll down and click the **Add rule** button and enter the following rule:
+1. Scroll down to **Inbound rules** and click the **Add rule** button and enter the following rule:
    - **Type**: **http**
-   - **Destination**: Keep **Custom** and enter **10.0.0.0/8**.
-   - Click the **Create security group** button.
+   - **Source**: Keep **Custom** and enter **10.0.0.0/8**.
+   - Click the **Create security group** button. _there is already an **Outbound rule** for all traffic._
 
 
 

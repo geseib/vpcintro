@@ -1,15 +1,15 @@
 +++
-menutitle = "Transit Gateway"
+menutitle = "Private Hosted Zone"
 chapter = false
 weight = 70
 +++
 
-## Create a Transit Gateway
+## Private Hosted Zone
 
-Now lets deploy a Transit Gateway to connect our two VPCs. 
+Now lets simplify finding our applications by using Route 53 Private Hosted Zones. 
 
 
-![TGW Diagram](/images/tgw-diagram.png)
+![TGW Diagram](images/tgw-diagram.png)
 
 #### We will complete the following steps:
 1. Create a Transit Gateway

@@ -57,7 +57,7 @@ It seems we forgot something on our launch template. We want our EC2 instance to
 /opt/aws/bin/ec2-metadata -o | /bin/cut -d" " -f2 >> /var/www/html/index.php
 /bin/echo -n "Availability Zone: " >> /var/www/html/index.php
 /opt/aws/bin/ec2-metadata -z | /bin/cut -d" " -f2 >> /var/www/html/index.php
-/bin/echo "NLB Web Server Demo" >> /var/www/html/index.php
+/bin/echo "NLB Web Server Lab" >> /var/www/html/index.php
 /bin/echo "remote ip is <?php \$ip = isset(\$_SERVER['HTTP_CLIENT_IP']) ? \$_SERVER['HTTP_CLIENT_IP'] : isset(\$_SERVER['HTTP_X_FORWARDED_FOR']) ? \$_SERVER['HTTP_X_FORWARDED_FOR'] : \$_SERVER['REMOTE_ADDR']; echo \$ip;?>" >> /var/www/html/index.php
 /bin/echo "" >> /var/www/html/index.php
 /bin/echo "remote tcp port is <?php \$port = \$_SERVER['REMOTE_PORT']; echo \$port;?>" >> /var/www/html/index.php

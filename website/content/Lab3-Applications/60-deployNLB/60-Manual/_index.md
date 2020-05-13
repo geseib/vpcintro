@@ -1,19 +1,18 @@
 +++
-menutitle = "NLB Application"
+menutitle = "Option 1. Manual"
 chapter = false
-weight = 60
+weight = 61
 +++
 
-## Create a Network Load Balancer and Autoscaling Group
+## Manually Create a Network Load Balancer and Autoscaling Group
 
-Now lets depoly a Network Load Balancer backed by an Autoscaling group. You can either work through this step manually or have Cloudformation build it for you.
+Lets depoly a Network Load Balancer backed by an Autoscaling group. If you would rather go quickly to the next lab you can use the **[CloudFromation template](../60-Automated/index.html)
+
+Make sure you are logged into your AWS account (Either your AWS account or via the AWS Event Dashboard).
 
 ![NLB Diagram](/images/nlb-diagram.png)
 
-### Make sure you are ready
-Make sure you are logged into your AWS account (Either your AWS account or via the AWS Event Dashboard).
-
-Before proceeding down one of the two paths, verify that you have access to the EC2 Instance in the 2nd VPC. it should be named **VPC65-Webserver**
+Also Verify that you have access to the EC2 Instance in the 2nd VPC. it should be named **VPC65-Webserver**
 
 1. From the **Amazon EC2** console and from the left menu select **Instances**.
 

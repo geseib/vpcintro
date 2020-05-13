@@ -1,14 +1,19 @@
 +++
 title = "Test Connectivity"
 chapter = false
-weight = 69
+weight = 52
 +++
 
-## Test connectivity from the Same VPC
+## Test connectivity from the Same VPC or across the TGW
 
-First let's get the DNS name of the **NEtwork Load Balancer**
+  ![NLBs](/images/nlb-test-diagram.png)
 
-  ![NLBs](/images/nlb-nlbs.png)
+You can test from either on the EC2 instance **10.64.2.10** _(light blue line)_ or **10.65.2.10** _(light red line)_.
+
+###Step-by-step
+First let's get the DNS name of the **Network Load Balancer**
+
+  ![NLBs](/images/nlb-nlb-list.png)
 1. From the **Amazon EC2** console and from the left menu, near the bottom, select **Load Balancers**. Check the box next to your **Network Load Balancer** in the list.
 
    ![Select NLB](/images/nlb-details.png)
@@ -41,7 +46,7 @@ First let's get the DNS name of the **NEtwork Load Balancer**
    Welcome to my web server. Server private IP is 10.65.2.178
    Availability Zone: us-east-1a
    MY Web Server Demo
-   remote ip is 10.65.2.10
+   remote ip is 10.64.2.10
    remote tcp port is 46254
    ```
 

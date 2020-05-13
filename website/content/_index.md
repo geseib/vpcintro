@@ -12,4 +12,4 @@ This workshop shows some of the basic networking aspects of Amazon Virtual Priva
 
 Within your own AWS account, you can explore how to provision a logically isolated section of the AWS Cloud where you can launch AWS resources in a virtual network that you define.
 
-![Basic VPC Diagram](images/vpc_intro_complete_diagram.png)
+![Basic VPC Diagram](/images/vpc_intro_complete_diagram.png)
