@@ -11,4 +11,4 @@ Now that you have seen the details of manually deploying subnets, Internet Gatew
 Make sure you are logged into your AWS account (Either your AWS account or via the AWS Event Dashboard)
 
 
-![Both VPCs Diagram](images/2ndvpc-diagramboth.png)
+![Both VPCs Diagram](/images/2ndvpc-diagramboth.png)

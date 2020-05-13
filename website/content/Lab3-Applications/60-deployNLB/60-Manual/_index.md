@@ -8,7 +8,7 @@ weight = 61
 
 Lets depoly a Network Load Balancer backed by an Autoscaling group. If you would rather go quickly to the next lab you can use the **[CloudFromation template](../60-Automated/index.html)
 
-Make sure you are logged into your AWS account (Either your AWS account or via the AWS Event Dashboard).
+Make sure you are logged into your AWS account (Either your AWS account or via the AWS Event Dashboard if an AWS hosted event).
 
 ![NLB Diagram](/images/nlb-diagram.png)
 

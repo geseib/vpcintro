@@ -11,4 +11,4 @@ This lab shows some of the basic networking aspects of **Amazon Virtual Private 
 
 You will build two VPCs: one manually and one with a few clicks using **AWS Cloudformation**.
 
-![Both VPCs Diagram](images/2ndvpc-diagramboth.png)
+![Both VPCs Diagram](/images/2ndvpc-diagramboth.png)
