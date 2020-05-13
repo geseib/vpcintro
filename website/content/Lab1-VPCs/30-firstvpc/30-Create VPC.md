@@ -16,13 +16,23 @@ Run CloudFormation template 2.tgw-csr.yaml to deploy the Transit Gateway, route 
 
     ![VPC create](/images/vpc-create.png)
 
-1. Name the **VPC** using a **Name tag**, such as **myVPC**. 
+1. Name the **VPC** using a **Name tag**, such as **VPC64**. 
     - Enter **10.64.0.0/16** for the **IPv4 CIDR block**.
     - Leave **IPv6 CIDR block (no IPv6 CIDR block)**
     - Leave **Tenancy (Default)**.
     - Click the **Create** button at the bottom right.
 
-    ![IGW Created](/images/vpc-created.png)
+    ![VPC Created](/images/vpc-created.png)
 1. Click the **Close** button once the VPC has been created.
+
+#### Enable DNS Hostnames
+We want to be able to use Route53 **Private Hosted Zones** for DNS resolution, so lets go ahead an enable this, as it is a prerequisite.
+
+![Enalbe Hostnames](/images/vpc-hostnames.png)
+1. With the VPC selected in the list, click the action button and select **Enable DNS hostnames** from the list.
+
+    ![Edit Hostnames](/images/vpc-hostnames-edit.png)
+1. Check the box to **enable** **DNS hostnames** and click the **Save** button.
+
   
 ### You have completed the VPC Creation. ###

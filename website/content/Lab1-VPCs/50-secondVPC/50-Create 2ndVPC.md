@@ -18,5 +18,5 @@ We will use a cloudfromation template that builds out all of the components we b
 
 
 1. After about 3-5 minutes, your VPC will be deployed with a new EC2 Instance. 
-### You have completed the Launch VPC. ###
+### You have completed the Launch VPC using AWS Cloudformation. ###
 

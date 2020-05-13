@@ -7,15 +7,15 @@ weight = 31
 ## Create Subnets
 
 ### We will create four(4) subnets: ###
-2 Public: **PublicA** and **Public B** | 
-2 Private: **PrivateA** and **Private B**  
+2 Public: **VPC64-PublicA** and **VPC64-PublicB** | 
+2 Private: **VPC64-PrivateA** and **VPC64-PrivateB**  
 
    Subnet Name | Availability Zone | CIDR block
    ------------| ------------------|----------
-**PublicA**|us-east-1a|10.64.0.0/24
-**PublicB**|us-east-1b|10.64.1.0/24
-**PrivateA**|us-east-1a|10.64.2.0/24
-**PrivateB**|us-east-1b|10.64.3.0/24
+**VPC64-PublicA**|us-east-1a|10.64.0.0/24
+**VPC64-PublicB**|us-east-1b|10.64.1.0/24
+**VPC64-PrivateA**|us-east-1a|10.64.2.0/24
+**VPC64-PrivateB**|us-east-1b|10.64.3.0/24
 
 
 
@@ -25,8 +25,8 @@ _You will see the subnets for the default VPC (1 for each Availability Zone in t
 
 1. Click the **Create subnet** button.
 
-1. Create **Public A** subnet in **Availability Zone A** with the following settings:
-    - **Name tag**: **PublicA**.
+1. Create **VPC64-Public A** subnet in **Availability Zone A** with the following settings:
+    - **Name tag**: **VPC64-PublicA**.
     - **VPC**: select **_your vpc_** name from the dropdown list.
     - **Availability Zone**: **us-east-1a**
     - **IPv4 CIDR block**: **10.64.0.0/24** 
@@ -40,9 +40,9 @@ _You will see the subnets for the default VPC (1 for each Availability Zone in t
 
     Subnet Name | Availability Zone | CIDR block
      ------------| ------------------|----------
-    PublicB|us-east-1b|10.64.1.0/24
-    PrivateA|us-east-1a|10.64.2.0/24
-    PrivateB|us-east-1b|10.64.3.0/24
+    VPC64-PublicB|us-east-1b|10.64.1.0/24
+    VPC64-PrivateA|us-east-1a|10.64.2.0/24
+    VPC64-PrivateB|us-east-1b|10.64.3.0/24
 
 1. When you are done, the VPC subnets console should list all four subnets for your VPC. ![ALl Subnets Complete](/images/createsubnets-complete.png)
 

@@ -16,7 +16,7 @@ An Internet Gateway is required to provide internet access to and from your VPC.
 
    ![IGW create](/images/creategateways-createigw.png)
 
-1. Name the **Internet Gateway** using a **Name tag**, such as **myVPC-IGW**. Click the **Create** button at the bottom right.
+1. Name the **Internet Gateway** using a **Name tag**, such as **VPC64-IGW**. Click the **Create** button at the bottom right.
 
    ![IGW Created](/images/creategateways-igwcreated.png)
 

@@ -55,7 +55,7 @@ If you have any issues, it likely shows up with the fact that you cannot connect
 The following are good places to start: 
 There are several steps that could be causing the issue.
 
-1. Is the ec2 Instance in a **Private** subnet?
+1. Is the ec2 Instance in a **VPC64-Private** subnet?
 1. Is the IAM role you created attached to the EC2 instance
 1. Does the IAM role have the **AmazonSSMManagedInstanceCore**
 1. Are the correct route tables attached the subnets (Public route table to both public subnets and the PRivate route table to the Private subnets)

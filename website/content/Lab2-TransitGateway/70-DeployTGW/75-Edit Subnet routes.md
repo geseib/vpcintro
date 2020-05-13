@@ -15,6 +15,8 @@ We will repeat the process for VPC64 and VPC65 (_be sure to do both VPCs)
 1. From the **Amazon VPC** console and from the left menu select **Route tables** (_it will be near the top of the list_).
    ![Route tables](/images/tgw-vpc-rt-vpc64-list.png)
 
+1. Check the box next to the Private route table for 10.64.0.0/16 subnet (named like **VPC64-Private route table**)
+
 1. Click the **Action** button, and select **Edit routes**.
 
    ![Edit Route](/images/tgw-vpc-rt-vpc64-edit.png)
@@ -27,9 +29,11 @@ We will repeat the process for VPC64 and VPC65 (_be sure to do both VPCs)
     ![Route edited](/images/tgw-vpc-rt-edited.png)
 1. Click the **Close** button once the route table has been edited.
 
-#### VPC64 Private Route table (the other VPC!)
+#### VPC65 Private Route table (the other VPC!)
 1. From the **Amazon VPC** console and from the left menu select **Route tables** (_it will be near the top of the list_).
    ![Route tables](/images/tgw-vpc-rt-vpc65-list.png)
+
+1. Check the box next to the Private route table for 10.65.0.0/16 subnet (named like **VPC65-Private route table**)
 
 1. Click the **Action** button, and select **Edit routes**.
 

@@ -28,8 +28,8 @@ We will repeat the process for VPC64 and VPC65 (_be sure to do both VPCs_)
     - **IPv6**: leave unchecked
     - **VPC ID**: select VPC with **10.64.0.0/16** from the list
     - **Subnet IDs**:
-       - **us-east-1a**: select the **PrivateA subnet** from the dropdown list
-       - **us-east-1b**: select the **PrivateB subnet** from the dropdown list
+       - **us-east-1a**: select the **VPC64-PrivateA subnet** from the dropdown list
+       - **us-east-1b**: select the **VPC64-PrivateB subnet** from the dropdown list
     - Click the **Create attachment** button.
 
     _Be sure you selected the Private subnets for both Availability Zones_
@@ -53,8 +53,8 @@ We will repeat the process for VPC64 and VPC65 (_be sure to do both VPCs_)
     - **IPv6**: leave unchecked
     - **VPC ID**: select VPC with **10.65.0.0/16** from the list
     - **Subnet IDs**:
-       - **us-east-1a**: select the **PrivateA subnet** from the dropdown list
-       - **us-east-1b**: select the **PrivateB subnet** from the dropdown list
+       - **us-east-1a**: select the **VPC65-PrivateA subnet** from the dropdown list
+       - **us-east-1b**: select the **VPC65-PrivateB subnet** from the dropdown list
     - Click the **Create attachment** button.
 
     _Be sure you selected the Private subnets for both Availability Zones_

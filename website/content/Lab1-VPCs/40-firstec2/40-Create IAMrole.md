@@ -28,7 +28,7 @@ IAM Roles can be used as Instance Profiles, giving the EC2 instance permissions.
 1. At the next screen, click the **Next:Review** button. 
 
    ![Select name](/images/iam-namerole.png)
-1. At the next screen, give the role a **Role name** such as **myEC2-role**. Click the **Create role** button. 
+1. At the next screen, give the role a **Role name** such as **VPC64-EC2-role**. Click the **Create role** button. 
 
 
 

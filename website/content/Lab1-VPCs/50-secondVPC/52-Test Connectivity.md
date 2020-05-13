@@ -11,7 +11,7 @@ It will take a few minutes for the Cloudformation template to to finish launchin
 1. From the **Amazon EC2** console and from the left menu select **Instances**.
 
     ![connect button](/images/testec2-list.png)
-1. Check the box next to the new instance in the list and Click the **Connect** button aboe the list.
+1. Check the box next to the new instance in the list (named VPC65-EC) and click the **Connect** button above the list.
 
     ![connect session manager](/images/testec2-connect.png)
 1. Click the radio button next to  **Session Manager** and click the **Connect** button. _this will bring up a new browser tab with the Linux bash shell_
@@ -50,16 +50,7 @@ It will take a few minutes for the Cloudformation template to to finish launchin
 
 ### Troubleshooting ###
 
-If you have any issues, it likely shows up with the fact that you cannot connect to the Ec2 Instance. See if you can troubleshoot it yourself, walking through the steps.
-
-The following are good places to start: 
-There are several steps that could be causing the issue.
-
-1. Is the ec2 Instance in a **Private** subnet?
-1. Is the IAM role you created attached to the EC2 instance
-1. Does the IAM role have the **AmazonSSMManagedInstanceCore**
-1. Are the correct route tables attached the subnets (Public route table to both public subnets and the PRivate route table to the Private subnets)
-1. Did you add the 0.0.0.0/0 route to the IGW on the public route table and the 0.0.0.0/0 route to the NGW on the private route table. 
+If you have any issues, verify that the Cloudformation stack has complete. It can take a few minutes to finish the automation and the EC2 instance to finish booting up.
 
 
 ## You have completed the Lab.

@@ -16,7 +16,7 @@ A Virtual Private Gateway is used to provide private access to your data center 
 
     ![IGW create](/images/creategateways-createvgw.png)
 
-1. Name the **Virtual Private Gateway** using a **Name tag**, such as **myVPC-VGW**. Leave the **ASN** as **Amazon default ASN**. _Amazon default ASN will be 64512._ Click the **Create** button at the bottom right.
+1. Name the **Virtual Private Gateway** using a **Name tag**, such as **VPC64-VGW**. Leave the **ASN** as **Amazon default ASN**. _Amazon default ASN will be 64512._ Click the **Create** button at the bottom right.
 
     ![VGW Created](/images/creategateways-vgwcreated.png)
 1. Click the **Close** button once the Virtual Private Gateway has been created.
