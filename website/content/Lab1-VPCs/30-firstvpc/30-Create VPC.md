@@ -29,9 +29,11 @@ Run CloudFormation template 2.tgw-csr.yaml to deploy the Transit Gateway, route 
 We want to be able to use Route53 **Private Hosted Zones** for DNS resolution, so lets go ahead an enable this, as it is a prerequisite.
 
 ![Enalbe Hostnames](/images/vpc-hostnames.png)
+
 1. With the VPC selected in the list, click the action button and select **Enable DNS hostnames** from the list.
 
     ![Edit Hostnames](/images/vpc-hostnames-edit.png)
+
 1. Check the box to **enable** **DNS hostnames** and click the **Save** button.
 
   
