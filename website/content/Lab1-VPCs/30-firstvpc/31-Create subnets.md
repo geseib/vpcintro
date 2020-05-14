@@ -33,7 +33,7 @@ _You will see the subnets for the default VPC (1 for each Availability Zone in t
     - **IPv4 CIDR block**: **10.64.0.0/24** 
 
 1. Click the ***create** button.
-![Public Subnet complete](/images/createsubnets-publicacreated.png)
+![Public Subnet complete](/images/vpc-createsubnets-publicacreated.png)
 
 1. After the subnet is created click the **Close** button.
 
