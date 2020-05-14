@@ -16,6 +16,13 @@ Run CloudFormation template 2.tgw-csr.yaml to deploy the Transit Gateway, route 
 
     ![VPC create](/images/vpc-create.png)
 
+   
+    >VPC64 CIDR
+    ```
+    10.64.0.0/16
+    ```
+     
+
 1. Name the **VPC** using a **Name tag**, such as **VPC64**. 
     - Enter **10.64.0.0/16** for the **IPv4 CIDR block**.
     - Leave **IPv6 CIDR block (no IPv6 CIDR block)**

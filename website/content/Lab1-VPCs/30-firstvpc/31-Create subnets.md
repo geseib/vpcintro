@@ -12,10 +12,10 @@ weight = 31
 
    Subnet Name | Availability Zone | CIDR block
    ------------| ------------------|----------
-**VPC64-PublicA**|us-east-1a|10.64.0.0/24
-**VPC64-PublicB**|us-east-1b|10.64.1.0/24
-**VPC64-PrivateA**|us-east-1a|10.64.2.0/24
-**VPC64-PrivateB**|us-east-1b|10.64.3.0/24
+**VPC64-PublicA**|us-east-1a|`10.64.0.0/24`
+**VPC64-PublicB**|us-east-1b|`10.64.1.0/24`
+**VPC64-PrivateA**|us-east-1a|`10.64.2.0/24`
+**VPC64-PrivateB**|us-east-1b|`10.64.3.0/24`
 
 
 
@@ -40,9 +40,9 @@ _You will see the subnets for the default VPC (1 for each Availability Zone in t
 
     Subnet Name | Availability Zone | CIDR block
      ------------| ------------------|----------
-    VPC64-PublicB|us-east-1b|10.64.1.0/24
-    VPC64-PrivateA|us-east-1a|10.64.2.0/24
-    VPC64-PrivateB|us-east-1b|10.64.3.0/24
+    **VPC64-PublicB**|us-east-1b|`10.64.1.0/24`
+    **VPC64-PrivateA**|us-east-1a|`10.64.2.0/24`
+    **VPC64-PrivateB**|us-east-1b|`10.64.3.0/24`
 
 1. When you are done, the VPC subnets console should list all four subnets for your VPC. ![ALl Subnets Complete](/images/createsubnets-complete.png)
 
