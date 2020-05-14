@@ -37,7 +37,7 @@ We want to be able to use Route53 **Private Hosted Zones** for DNS resolution, s
 
 ![Enalbe Hostnames](/images/vpc-hostnames.png)
 
-1. With the VPC selected in the list, click the action button and select **Enable DNS hostnames** from the list.
+1. Check the box next to the new VPC, **VPC64**, in the list, click the **Actions** button and select **Enable DNS hostnames** from the list.
 
     ![Edit Hostnames](/images/vpc-hostnames-edit.png)
 

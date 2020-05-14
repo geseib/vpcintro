@@ -5,7 +5,7 @@ weight = 39
 +++
 
 ## Review
-![Basic EC2 Diagram](/images/vpc_intro_complete_diagram.png)
+![Basic EC2 Diagram](/images/vpc64-diagram.png)
 
 We completed the following steps:
    - Created a VPC

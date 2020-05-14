@@ -25,7 +25,7 @@ We will now launch an Linux EC2 Instance into a private subnet. We will attach t
 1. Let's configure the instance to launch in the Private A subnet in your VPC with the IAM role you created using the following settings:
     - **Network**: Select **VPC64**(10.64.0.0/16) from the dropdown list.
     - **Subnet**: Select **VPC64-PrivateA** subnet from the dropdown list.
-    - **IAM Role**: Select **your_role** you just created from the dropdown list.
+    - **IAM Role**: Select the role **VPC64-EC2-Role** you just created from the dropdown list.
 
     ![Configure IP address](/images/ec2-ip.png)
 1. Scroll down to **Network Interfaces** and edit the IP address:

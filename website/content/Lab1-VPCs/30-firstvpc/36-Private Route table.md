@@ -10,7 +10,7 @@ We now are ready to define our next routing policy. This time for the private su
 
 ![Route tables Diagram](/images/routetables-diagram.png)
 1. From the **Amazon VPC** console and from the left menu select **Route tables**.
-    ![Route tables](/images/routetables-list.png)
+    ![Route tables](/images/routetables-private-list.png)
 
 1. Click the Create **Route table** button.
 

@@ -42,6 +42,27 @@ It will take ~1 minute for the EC2 Instance to finish launching.
     54.85.184.24
     ```
 
+1. See if you can figure out where that address comes from and what it is associated with. Feel free to explore around the AWS console and find out what this address is associated with.
+
+<details><summary>Hint 1</summary>
+<p>
+Take a look at the details of the gateways you deployed! What about Elastic IPs as well.
+</p>
+</details>
+
+<details>
+
+<summary>Hint 2</summary>
+
+
+![NAT Gateway EIP](/images/ec2-ngw-eip.png)
+
+From the **Amazon VPC** console and from the left menu select **NAT Gateways**. Select your NAT Gateway from the list and look at details below
+
+
+</details>
+
+
     You can also try the following:
     ```
     curl www.example.com

@@ -12,7 +12,7 @@ An Internet Gateway is required to provide internet access to and from your VPC.
 1. From the **Amazon VPC** console and from the left menu select **Internet Gateways**.
    ![IGWS](/images/creategateways-igws.png)
 
-1. Click the **Create Internet Gateway** button.
+1. Click the **Create Internet gateway** button.
 
    ![IGW create](/images/creategateways-createigw.png)
 
