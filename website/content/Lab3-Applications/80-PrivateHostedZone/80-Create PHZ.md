@@ -22,14 +22,14 @@ _note, if this is an AWS Event you may see errors stating you dont have sufficen
 
 #### Create the Hosted Zone
 
-   ![Hosted Zones](/images/r53.png)
+   ![Hosted Zones](/images/r53-welcome.png)
 1. From the **Route53** console and from the left menu select **Hosted Zones**. Click the **Create Hosted Zones** button.
 
-   ![Create button](/images/r53-list.png)
+   ![Create button](/images/r53-empty.png)
 
 1. From the Hosted Zones list, again Click the **Create Hosted Zone** button above the list.
 
-    ![Create PHZ](/images/r53-create.png)
+    ![Create PHZ](/images/r53-phz-create.png)
 1. Configure the **Hosted Zone** with the following selections:
     - **Domain Name**: give the zone a name, such as **awslab.internal**.
     - **Comment**: give the zone a description, such as **VPC Intro PHZ labW**
@@ -38,8 +38,6 @@ _note, if this is an AWS Event you may see errors stating you dont have sufficen
 
     - Click the **Create ** button.
 
-    ![TGW Created](/images/tgw-created.png)
-1. Click the **Close** button once the TGW has been created.
 
 
 ### Create recordsets
