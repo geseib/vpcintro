@@ -10,7 +10,7 @@ We will use a cloudfromation template that builds out all of the components we b
 
 1. Click on the CloudFormation Launch link below that corresponds to the AWS Region in which you want to deploy the workshop.
 
-   [![US East (N. Virginia)](https://samdengler.github.io/cloudformation-launch-stack-button-svg/images/us-east-1.svg)](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/create/review?stackName=VPC65&templateURL=https://s3.amazonaws.com/{{<codebucket>}}/networkingdemos-vpcintro.yml&param_AvailabilityZoneA=us-east-1a&param_AvailabilityZoneB=us-east-1b&param_VPCCIDR=10.65.0.0\/16)
+   [![US East (N. Virginia)](https://samdengler.github.io/cloudformation-launch-stack-button-svg/images/us-east-1.svg)](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/create/review?stackName=VPC65&templateURL=https://{{<codebucket>}}/networkingdemos-vpcintro.yml&param_AvailabilityZoneA=us-east-1a&param_AvailabilityZoneB=us-east-1b&param_VPCCIDR=10.65.0.0\/16)
    
 
    ![Accept defaults](/images/2ndvpc-ack.png)
