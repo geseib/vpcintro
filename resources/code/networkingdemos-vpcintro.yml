@@ -86,8 +86,7 @@ Resources:
           Value: !Join
             - ""
             - - Ref: "AWS::StackName"
-              - "-"
-              - VPC
+              
         - Key: project
           Value: Networking Demos by GSeib
 
@@ -106,7 +105,7 @@ Resources:
             - ""
             - - Ref: "AWS::StackName"
               - "-"
-              - "Priv-A Subnet"
+              - "PrivateA Subnet"
 
   VPCPrivateSubnetB:
     Type: AWS::EC2::Subnet
@@ -123,7 +122,7 @@ Resources:
             - ""
             - - Ref: "AWS::StackName"
               - "-"
-              - "Priv-B Subnet"
+              - "PrivB Subnet"
 
   VPCPrivateSubnetRouteTable:
     Type: AWS::EC2::RouteTable

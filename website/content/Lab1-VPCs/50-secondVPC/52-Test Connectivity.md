@@ -10,7 +10,7 @@ It will take a few minutes for the Cloudformation template to to finish launchin
 
 1. From the **Amazon EC2** console and from the left menu select **Instances**.
 
-    ![connect button](/images/testec2-list.png)
+    ![connect button](/images/test2ndec2-list.png)
 1. Check the box next to the new instance in the list (named VPC65-EC) and click the **Connect** button above the list.
 
     ![connect session manager](/images/testec2-connect.png)
