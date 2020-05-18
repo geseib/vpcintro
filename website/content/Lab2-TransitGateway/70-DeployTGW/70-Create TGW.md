@@ -27,7 +27,9 @@ We will use a Transit Gateway to route between the two VPCs. Lets create the Tra
     - **Auto accept shared attachments**: **check**
     - Click the **Create Transit Gateway** button.
 
-    _Be sure to uncheck the Default route table association and propagation_
+    _Be sure to uncheck the Default route table association and propagation. We do this becuase we want to control what route table each attachment uses, and which atachments advertise routes to the route tables in the Transit Gateway._
+
+    -The Auto accept shared attachments option lets those AWS accounts we have shared the TGW with, to create an attachment to this Transit Gateway. They still wont be able to route without action on our end, becuase we unchecked the router table association/propagation._
 
     ![TGW Created](/images/tgw-created.png)
 

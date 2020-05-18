@@ -122,7 +122,7 @@ Resources:
             - ""
             - - Ref: "AWS::StackName"
               - "-"
-              - "PrivB Subnet"
+              - "PrivateB Subnet"
 
   VPCPrivateSubnetRouteTable:
     Type: AWS::EC2::RouteTable
@@ -275,7 +275,7 @@ Resources:
             - ""
             - - Ref: "AWS::StackName"
               - "-"
-              - "Pub-A Subnet"
+              - "PublicA Subnet"
 
   VPCPublicSubnetB:
     Type: AWS::EC2::Subnet
@@ -292,7 +292,7 @@ Resources:
             - ""
             - - Ref: "AWS::StackName"
               - "-"
-              - "Pub-B Subnet"
+              - "PublicB Subnet"
 
   VPCPublicSubnetRouteTable:
     Type: AWS::EC2::RouteTable

@@ -38,7 +38,7 @@ _(if not completed previously)_
 
    ![Select Endpoint Service](/images/pl-vpces-details.png)
 
-1. In the details panel below, get the DNS Name of the **Endpoint Service**. You can click the copy button to the right of the Service name.
+1. In the details panel below, get the Service Name of the **Endpoint Service**. You can click the copy button to the right of the Service name.
 
 #### Endpoint creation
 ![PL Console](/images/pl-vpce-list.png)

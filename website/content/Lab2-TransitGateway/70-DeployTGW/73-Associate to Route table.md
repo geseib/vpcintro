@@ -21,6 +21,7 @@ We will repeat the process for VPC64 and VPC65 (_be sure to do both VPCs)
 
 1. Create the **Association** by selecting the **VPC64** Attachment from the dropdown list.
     - Click the **Create association** button.
+    - _if the **VPC64** attachment is not there, it may still be creating. Give it another minute or so_.
 
     ![Association Created](/images/tgw-assoc-vpc64-created.png)
 1. Click the **Close** button once the TGW has been created.

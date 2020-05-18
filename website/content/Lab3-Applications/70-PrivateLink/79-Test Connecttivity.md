@@ -14,7 +14,7 @@ Now if we have complete all the steps we should be able to test connectivity acr
 
 1. From the **Amazon EC2** console and from the left menu select **Instances**.
 
-   ![connect button](/images/testec2-list.png)
+   ![connect button](/images/test-vpce-list.png)
 
 1. Check the box next to your instance in VPC64 and Click the **Connect** button aboe the list.
 

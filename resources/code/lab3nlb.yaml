@@ -196,7 +196,7 @@ Resources:
       UnhealthyThresholdCount: 2
       Matcher:
         HttpCode: 200-399
-      Name: !Sub "${ParentStack}-${WhichVPC}-http-tg"
+      Name: "basicwebservers"
       Port: 80
       Protocol: TCP
       Tags:

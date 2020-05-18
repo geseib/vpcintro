@@ -27,7 +27,7 @@ Before proceeding down one of the two paths, verify that you have access to the 
 
    ![ping test](/images/testec2-ping.png)
 
-1. At the **sh-4.2\$** prompt, ping **www.example.com**. _press **CTRL-C** or **Command-C** to stop the ping._
+1. At the **sh-4.2\$** prompt, ping **www.example.com**. _press **CTRL-C** or **Command-C** to stop the ping.
    ```
    ping www.example.com
    ```

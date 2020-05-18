@@ -20,41 +20,99 @@ Now if we have complete all the steps we should be able to test connectivity acr
 
    ![ping test](/images/tgw-test-ping.png)
 
-1. At the **sh-4.2\$** prompt,ping **10.65.2.10**.\_
+1. At the **sh-4.2\$** prompt,dig **local.awslab.internal**.\_
 
    ```
-   ping 10.65.2.10
+   dig local.awslab.internal
    ```
 
    This will return something like the following
 
    ```
-   sh-4.2$ ping 10.65.2.10
-   PING 10.65.2.10 (10.65.2.10) 56(84) bytes of data.
-   64 bytes from 10.65.2.10: icmp_seq=1 ttl=254 time=1.14 ms
-   64 bytes from 10.65.2.10: icmp_seq=2 ttl=254 time=0.930 ms
-   64 bytes from 10.65.2.10: icmp_seq=3 ttl=254 time=0.830 ms
-   ^C
-   --- 10.65.2.10 ping statistics ---
-   3 packets transmitted, 3 received, 0% packet loss, time 2002ms
-   rtt min/avg/max/mdev = 0.830/0.969/1.149/0.137 ms
-   sh-4.2$
+   sh-4.2$ dig local.awslab.internal
+
+   ; <<>> DiG 9.11.4-P2-RedHat-9.11.4-9.P2.amzn2.0.2 <<>> local.awslab.internal
+   ;; global options: +cmd
+   ;; Got answer:
+   ;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 16867
+   ;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1
+
+   ;; OPT PSEUDOSECTION:
+   ; EDNS: version: 0, flags:; udp: 4096
+   ;; QUESTION SECTION:
+   ;local.awslab.internal.         IN      A
+
+   ;; ANSWER SECTION:
+   local.awslab.internal.  17      IN      A       10.64.3.253
+   local.awslab.internal.  17      IN      A       10.64.2.175
+
+   ;; Query time: 0 msec
+   ;; SERVER: 10.64.0.2#53(10.64.0.2)
+   ;; WHEN: Mon May 18 03:06:36 UTC 2020
+   ;; MSG SIZE  rcvd: 82
    ```
 
+At the **sh-4.2\$** prompt,dig **global.awslab.internal**.\_
 
-### Bonus - Can you solve this
-There is a web server running on 10.65.2.10. You can also use **curl** and **curl 10.65.2.10**, but there is something missing in the Security group for the 10.65.2.10 EC2 instance. Can you figure it out?  __note: curl allows  us to see an http page in the bash shell. The web server is running on TCP port 80_
+   ```
+   dig global.awslab.internal
+   ```
 
-   ![ping test](/images/tgw-test-sg.png)
+   This will return something like the following
 
-When completed you should see something like the following:
-   ![ping test](/images/tgw-test-curl.png)
+   ```
+   sh-4.2$ dig global.awslab.internal
 
+   ; <<>> DiG 9.11.4-P2-RedHat-9.11.4-9.P2.amzn2.0.2 <<>> global.awslab.internal
+   ;; global options: +cmd
+   ;; Got answer:
+   ;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 35296
+   ;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1
 
+   ;; OPT PSEUDOSECTION:
+   ; EDNS: version: 0, flags:; udp: 4096
+   ;; QUESTION SECTION:
+   ;global.awslab.internal.                IN      A
 
-### Troubleshooting
+   ;; ANSWER SECTION:
+   global.awslab.internal. 58      IN      A       10.65.2.113
+   global.awslab.internal. 58      IN      A       10.65.3.6
 
-If you are unable to ping across, go back and check the route tables. The most common issue is that the private route tables in the VPCs do not have the route to **10.0.0.0/8** pointing to the TGW. 
+   ;; Query time: 0 msec
+   ;; SERVER: 10.64.0.2#53(10.64.0.2)
+   ;; WHEN: Mon May 18 03:06:26 UTC 2020
+   ;; MSG SIZE  rcvd: 83
 
+   ```
+1. How about curl local.awslab.internal?
+   ```
+   curl local.awslab.internal
+   ```
+
+   ```
+   sh-4.2$ curl local.awslab.internal
+   Welcome to my web server. Server private IP is 10.65.2.228
+   Availability Zone: us-east-1a
+   Stack Name: VPC65
+   remote ip is 10.65.2.113
+   remote tcp port is 11270
+   
+   ```
+
+1. and finally, curl global.awslab.internal:
+   ```
+   curl global.awslab.internal
+   ```
+   
+   ```
+   sh-4.2$ curl global.awslab.internal
+   Welcome to my web server. Server private IP is 10.65.2.228
+   Availability Zone: us-east-1a
+   Stack Name: VPC65
+   remote ip is 10.64.2.10
+   remote tcp port is 45266
+   ```
+
+1. You can connect to the VPC65 EC2 instance and try the same commands and compare the results. Which are  different? 
 
 ## You have completed the Lab.

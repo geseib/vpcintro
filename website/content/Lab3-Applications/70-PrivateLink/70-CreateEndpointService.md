@@ -6,7 +6,7 @@ weight = 70
 
 ## Create VPC Endpoint Service
 
-We will VPC Endpoint Service to make our NLB application availabile to share to other VPCs in the same region. We could even share to VPCs in other AWS accounts. _Remember the VPC **Endpoint Services** are created in the VPC that will produce (or host) the application_.
+We will create a VPC Endpoint Service to make our NLB application availabile to share to other VPCs in the same region. We could even share to VPCs in other AWS accounts. _Remember the VPC **Endpoint Services** are created in the VPC that will produce (or host) the application_.
 
 ![Endpoint Service](/images/pl-vpces-diagram.png)
 
@@ -21,7 +21,7 @@ We will VPC Endpoint Service to make our NLB application availabile to share to 
     - **Associate Network Load Balancer**: check to box next to the NLB created earlier, named  **VPC65-NLB-Internal**.
     - Notice the **Included** and **Excluded Availability Zones**. when sharing to other accounts it is a good practice to place the NLB in all Availability Zones to provide complete access no matter which Availiablity Zones the consumer VPCs are in_.
     - Uncheck the **Require acceptance for endpoint**, so you do not have accept the VPC Endpoint when the consumer VPCs create them. 
-    - Uncheck **Enable private DNS name**. _This is a great feature to automate creation of the DNS entry along with the Endpoint creation for the consumers. It requires proof of domain ownership 
+    - Uncheck **Enable private DNS name**. _This is a great feature to automate creation of the DNS entry along with the Endpoint creation for the consumers. It requires proof of domain ownership. We dont have a real public DNS domain to use for the lab._
     - Click the **Add Tag**: button and give it a tag with the **Key** as **Name** and the **Value** as something like **VPC65-NLB-VPCES**
     - CLick the **Create service** button to finish
 

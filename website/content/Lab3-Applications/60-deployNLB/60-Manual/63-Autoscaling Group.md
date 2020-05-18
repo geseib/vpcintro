@@ -38,7 +38,7 @@ Amazon [EC2 Auto Scaling](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec
    - Check **Use scaling policies to adjust the capacity of this group**.
    - Change **Scale between 2 and 4 instances. These will be the minimum and maximum size of your group.**.
    - Leave the **Name**: **Scale Group Size**.
-   -  Leave the **NMetric Type**: **Average CPU Utilization**.
+   -  Leave the **Metric Type**: **Average CPU Utilization**.
    - Set **Taget Value** to something like **70**
    - Click the **Review** button.
 

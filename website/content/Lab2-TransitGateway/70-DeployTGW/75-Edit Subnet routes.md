@@ -47,4 +47,6 @@ We will repeat the process for VPC64 and VPC65 (_be sure to do both VPCs)
     ![Route edited](/images/tgw-vpc-rt-edited.png)
 1. Click the **Close** button once the route table has been edited.
 
+_Notice how we didnt modify the **Public** VPC route tables. In our scenario, we dont need for the public to route to anything beyond the VPC. So in order to prevent that access, we provided no route to the Transit gateway in the public route tables._
+
 ### You have completed the Subnet Route editing.
