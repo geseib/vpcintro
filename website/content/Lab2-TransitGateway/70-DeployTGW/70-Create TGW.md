@@ -10,6 +10,7 @@ We will use a Transit Gateway to route between the two VPCs. Lets create the Tra
 
 
 ![TGW Console](/images/tgw-list.png)
+
 1. From the **Amazon VPC** console and from the left menu scroll down and select **Transit Gateways**. Click the **Create Transit Gateway** button.
 
     ![Create TGW](/images/tgw-create.png)
@@ -29,7 +30,7 @@ We will use a Transit Gateway to route between the two VPCs. Lets create the Tra
     _Be sure to uncheck the Default route table association and propagation_
 
     ![TGW Created](/images/tgw-created.png)
-    
+
 1. Click the **Close** button once the TGW has been created.
 
 

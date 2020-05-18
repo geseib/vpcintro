@@ -38,7 +38,7 @@ _note, if this is an AWS Event you may see errors stating you dont have sufficen
 
     - Click the **Create ** button.
 
-
+    
 
 ### Create recordsets
 We will be using Alias records. Alias records recursively lookup DNS records at the server and return the final results. It is similar to CNAME records, however, with CNAME, the DNS client has to get each query and then do the follow up recursive query back to the server until its get to the IP address answer.
