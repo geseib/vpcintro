@@ -15,13 +15,10 @@ An Internet Gateway is required to provide internet access to and from your VPC.
 1. Click the **Create Internet gateway** button.
 
    ![IGW create](/images/creategateways-createigw.png)
-
 1. Name the **Internet Gateway** using a **Name tag**, such as **VPC64-IGW**. Click the **Create** button at the bottom right.
 
    ![IGW Created](/images/creategateways-igwcreated.png)
-
 1. Click the **Close** button once the Internet Gateway has been created.
-
    ![IGW List](/images/creategateways-attachigwlist.png)
 
 1. Click the Action button above the list, and select Attach to VPC.
