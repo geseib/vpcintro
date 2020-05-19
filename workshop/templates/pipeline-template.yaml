@@ -153,6 +153,17 @@ Resources:
                 Extract: true
                 BucketName: !Ref ResourcesBucket
               RunOrder: 1
+            - Name: update-resources-s3-public-acl
+              ActionTypeId:
+                Category: Invoke
+                Owner: AWS
+                Provider: Lambda
+                Version: 1
+              InputArtifacts:
+                - Name: ResourcesArtifact
+              Configuration:
+                FunctionName: !GetAtt CodePipelineResourcesS3ObjectsPublicRead.Outputs.PublicReadAclFunctionName
+              RunOrder: 2
 
 
   CodeBuildProject:
@@ -173,7 +184,17 @@ Resources:
         Type: CODEPIPELINE
         BuildSpec: workshop/buildspec.yml
 
+  CodePipelineResourcesS3ObjectsPublicRead:
+    Type: AWS::Serverless::Application
+    Properties:
+      Location:
+        ApplicationId: arn:aws:serverlessrepo:us-east-1:658479002703:applications/codepipeline-s3-objects-public-read
+        SemanticVersion: 0.0.2
+      Parameters:
+        S3BucketParameter: !Ref ResourcesBucket
+        BuildArtifactParameter: ResourcesArtifact
  
+
   CodePipelineServiceRole:
     Type: AWS::IAM::Role
     Properties:
