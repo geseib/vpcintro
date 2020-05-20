@@ -11,6 +11,7 @@ Now lets depoly a Network Load Balancer backed by an Autoscaling group. You can 
 ![NLB Diagram](/images/nlb-diagram.png)
 
 ### Make sure you are ready
+
 Make sure you are logged into your AWS account (Either your AWS account or via the AWS Event Dashboard).
 
 Before proceeding down one of the two paths, verify that you have access to the EC2 Instance in the 2nd VPC. it should be named **VPC65-Webserver**

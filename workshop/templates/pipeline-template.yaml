@@ -189,7 +189,7 @@ Resources:
     Properties:
       Location:
         ApplicationId: arn:aws:serverlessrepo:us-east-1:658479002703:applications/codepipeline-s3-objects-public-read
-        SemanticVersion: 0.0.2
+        SemanticVersion: 0.0.4
       Parameters:
         S3BucketParameter: !Ref ResourcesBucket
         BuildArtifactParameter: ResourcesArtifact
