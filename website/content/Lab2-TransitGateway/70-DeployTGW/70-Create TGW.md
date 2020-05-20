@@ -23,7 +23,7 @@ We will use a Transit Gateway to route between the two VPCs. Lets create the Tra
     - **VPN ECMP support**: checked
     - **Default route table association**: **UN**checked
     - **Default route table propagation**: **UN**checked
-    - **Multicast support**: **UN**checked
+    - **Multicast support**(_if avail in your region_): **UN**checked
     - **Auto accept shared attachments**: **check**
     - Click the **Create Transit Gateway** button.
 

@@ -12,7 +12,12 @@ Make sure you are logged into your AWS account (Either your AWS account or via t
 
 ![NLB Diagram](/images/nlb-diagram.png)
 
-Also Verify that you have access to the EC2 Instance in the 2nd VPC. it should be named **VPC65-Webserver**
+
+Verify that you have access to the **EC2** Instance in the 2nd VPC. it should be named **VPC65-Webserver**
+
+<details>
+<summary>Step-by-step instructions</summary>
+<p>
 
 1. From the **Amazon EC2** console and from the left menu select **Instances**.
 
@@ -41,3 +46,6 @@ Also Verify that you have access to the EC2 Instance in the 2nd VPC. it should b
    3 packets transmitted, 3 received, 0% packet loss, time 2003ms
    rtt min/avg/max/mdev = 0.814/1.102/1.555/0.326 ms
    ```
+   
+</p>
+</details>
