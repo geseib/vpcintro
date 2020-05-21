@@ -6,11 +6,12 @@ weight = 89
 
 ## Test connectivity across Transit Gateway
 
-Now if we have complete all the steps we should be able to test connectivity across the TGW. We will be testing from the first EC2 instance that you created in VPC 10.64.0.0/16. It has an address of **10.64.2.10**. We will be pinging across the Transit Gateway to **10.65.2.10**
+Now if we have completed all the steps, we should be able to test connectivity across the TGW. We will be testing from the first EC2 instance that you created in VPC 10.64.0.0/16. It has an address of **10.64.2.10**. We will be pinging across the Transit Gateway to **10.65.2.10**
 
+ ![Test Diagram](/images/tgw-test-diagram.png)
 1. From the **Amazon EC2** console and from the left menu select **Instances**.
 
-   ![connect button](/images/tgw-test-diagram.png)
+   ![connect button](/images/test2ndec2-list.png)  
 
 1. Check the box next to your instance in VPC64 and Click the **Connect** button aboe the list.
 
