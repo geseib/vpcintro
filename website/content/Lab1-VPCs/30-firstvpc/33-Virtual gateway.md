@@ -9,7 +9,7 @@ weight = 33
 A Virtual Private Gateway is used to provide private access to your data center and other locations using a VPN or AWS DIrect Connect (a dedicated connection). We will set one up in assuming we will connect a datacenter.
 ![Gateways Diagram](/images/creategateways-diagram.png)
 
-1. From the **Amazon VPC** console and from the left menu select **Virtual Gateways**.
+1. From the **Amazon VPC** console and from the left menu select **Private Virtual Gateways**.
     ![IGWS](/images/creategateways-vgws.png)
 
 1. Click the **Create Virtual Private Gateway** button.

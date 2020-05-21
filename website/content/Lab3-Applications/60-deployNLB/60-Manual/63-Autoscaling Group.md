@@ -21,8 +21,8 @@ Amazon [EC2 Auto Scaling](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec
    - **Group name**: name it, like **basicwebservers**.
    - **Launch Template Version**: make sure it is on **2** _this is where we added the user data_.
    - **Group size**: change to Start with **2** instances.
-   - **Network**: select the myvpc2-VPC **10.65.0.0/16** from the dropdown list.
-   - **Subnet**: Select both of the private subnets **myvpc2-Priv-A** and **myvpc2-Priv-B**
+   - **Network**: select the VPC65 **10.65.0.0/16** from the dropdown list.
+   - **Subnet**: Select both of the private subnets **VPC65-PrivateA** and **VPC65-PrivateB**
    
 
    ![health check](/images/nlb-asg-advanced.png)

@@ -13,18 +13,18 @@ weight = 62
 
    ![basic config](/images/nlb-tg-basic.png)
 
-1. Create a launch template with the following **Basic Configuration**:
+1. Specify group details with the following **Basic Configuration**:
    - Leave the **Choose target type** as **Instances**.
    - **Target group name**: name it, like **basicwebservers**.
-   - **Protocal and Port**: Change to **TCP** and **80**.
-   - **VPC**: select the 2ndVPC **10.65.0.0/16** from the dropdown list.
+   - **Protocal and Port**: Change Protcol to **TCP** and Port to **80**.
+   - **VPC**: select the VPC65 **10.65.0.0/16** from the dropdown list.
 
 
    ![health check](/images/nlb-tg-health.png)
 
 1. Scroll down to **Health checks** and configure the following:
    - Change the health check to **HTTP** from the dropdown
-   - Leave the **Health check path set to **/**
+   - Leave the **Health check path** set to **/**
    - click the **Next** button.
 
    ![register targets](/images/nlb-tg-register.png)
