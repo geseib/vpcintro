@@ -22,16 +22,15 @@ weight = 61
 
 1. Scroll down and enter the following:
    - **AMI**: Select the first AMI in the list **Amazon Linux 2 AMI (HVM)**
-   - **Security Group**: Select the security group created in the prvious step from the list.
-   - **Instance tags**: Click **add tag** button and use **key**: **Name**  and give it a Value: **VPC65-NLB-Webserver**
-
+   - **Instance type**: Type or Select **t2.micro** from the list.
+   - Leave **Key pair** at default **Don't include in launch template**
 
    ![ami and instance type](/images/nlb-lt-net.png)
 
 1. Scroll down and enter the following network configuration:
    - **Networking platform**: Leave checked **Virtual Private Cloud(VPC)**
-   - **Instance type**: Tpye or Select **t2.micro** from the list.
-   - Leave **Key pair** at default **Don't include in launch template**
+   - **Security Group**: Select the security group created in the prvious step from the list.
+   - **Instance tags**: Click **add tag** button and use **key**: **Name**  and give it a Value: **VPC65-NLB-Webserver**
    - Click the **Create launch template** button.
 
    ![success](/images/nlb-lt-success.png)
